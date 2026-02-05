@@ -622,12 +622,13 @@
                         <input type="text" id="customer-name" class="form-control" placeholder="Full Name" required>
                         <input type="email" id="customer-email" class="form-control" placeholder="Email Address"
                             required>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Shipping Address" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Zip Code" required>
+                        <div id="address-element" class="mb-3">
+                            <!-- Stripe will inject the Address Element here -->
+                            <div class="text-center p-3">
+                                <div class="spinner-border spinner-border-sm text-success" role="status">
+                                    <span class="visually-hidden">Loading Address Fields...</span>
+                                </div>
+                                <p class="mt-2 small text-muted">Loading Secure Address Lookup...</p>
                             </div>
                         </div>
                     </form>
@@ -991,6 +992,7 @@
 
         let elements;
         let paymentElement;
+        let addressElement;
 
         async function initializeStripe() {
             const container = document.getElementById('payment-element');
@@ -1085,13 +1087,30 @@
                 };
 
                 elements = stripe.elements({ clientSecret, appearance });
+
+                // Address Element
+                addressElement = elements.create('address', {
+                    mode: 'shipping',
+                    autocomplete: {
+                        mode: 'automatic',
+                    },
+                });
+                addressElement.mount('#address-element');
+
+                // Payment Element
                 paymentElement = elements.create('payment');
                 paymentElement.mount('#payment-element');
 
-                // Remove loading state once mounted
+                // Remove loading states once mounted
                 paymentElement.on('ready', () => {
                     const loader = container.querySelector('.text-center');
                     if (loader) loader.remove();
+                });
+
+                addressElement.on('ready', () => {
+                    const addrContainer = document.getElementById('address-element');
+                    const addrLoader = addrContainer.querySelector('.text-center');
+                    if (addrLoader) addrLoader.remove();
                 });
 
             } catch (e) {
@@ -1109,6 +1128,21 @@
         async function handlePaymentSubmit() {
             if (!elements || !stripe) return;
 
+            const name = document.getElementById('customer-name').value;
+            const email = document.getElementById('customer-email').value;
+
+            // Gatekeeper Validation
+            if (!name || !email) {
+                alert('Please provide your shipping details to secure your 90-Night Sleep Pass.');
+                return;
+            }
+
+            const { complete, value } = await addressElement.getValue();
+            if (!complete) {
+                alert('Please provide your shipping details to secure your 90-Night Sleep Pass.');
+                return;
+            }
+
             const submitBtn = document.getElementById('submit-button');
             const messageContainer = document.getElementById('payment-message');
 
@@ -1119,10 +1153,21 @@
                 elements,
                 confirmParams: {
                     return_url: window.location.origin + '/success.html',
+                    shipping: {
+                        name: name,
+                        address: {
+                            line1: value.address.line1,
+                            line2: value.address.line2,
+                            city: value.address.city,
+                            state: value.address.state,
+                            postal_code: value.address.postal_code,
+                            country: value.address.country,
+                        },
+                    },
                     payment_method_data: {
                         billing_details: {
-                            name: document.getElementById('customer-name').value,
-                            email: document.getElementById('customer-email').value,
+                            name: name,
+                            email: email,
                         }
                     }
                 },
@@ -1144,6 +1189,9 @@
             debounceTimer = setTimeout(() => {
                 if (paymentElement) {
                     paymentElement.destroy();
+                }
+                if (addressElement) {
+                    addressElement.destroy();
                 }
                 initializeStripe();
             }, 500);
