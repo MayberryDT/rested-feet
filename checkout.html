@@ -1119,9 +1119,11 @@
                 elements,
                 confirmParams: {
                     return_url: window.location.origin + '/success.html',
-                    billing_details: {
-                        name: document.getElementById('customer-name').value,
-                        email: document.getElementById('customer-email').value,
+                    payment_method_data: {
+                        billing_details: {
+                            name: document.getElementById('customer-name').value,
+                            email: document.getElementById('customer-email').value,
+                        }
                     }
                 },
             });
