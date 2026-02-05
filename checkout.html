@@ -775,17 +775,7 @@
                                 <span>+ Priority Handling</span>
                                 <span>$9.99</span>
                             </div>
-                            <!-- Coupon Code Section -->
-                            <div class="mt-3 pt-2 border-top">
-                                <label class="small fw-bold text-muted mb-1">PROMO CODE</label>
-                                <div class="input-group input-group-sm">
-                                    <input type="text" id="coupon-input" class="form-control"
-                                        placeholder="Enter code..." style="margin-bottom: 0;">
-                                    <button class="btn btn-dark btn-sm" type="button"
-                                        onclick="applyCoupon()">Apply</button>
-                                </div>
-                                <div id="coupon-message" class="small mt-1 d-none"></div>
-                            </div>
+
                             <hr>
                             <div class="d-flex justify-content-between fw-bold fs-5">
                                 <span>Total:</span>
@@ -891,7 +881,6 @@
         };
 
         let currentPack = 2; // Default
-        let activeCoupon = null;
         let serverCalculatedTotal = 49.95; // Storage for PayPal handoff
 
         function selectPackage(id) {
@@ -953,22 +942,7 @@
             document.getElementById('total-price').innerText = "$" + total.toFixed(2);
         }
 
-        function applyCoupon() {
-            const input = document.getElementById('coupon-input');
-            const msg = document.getElementById('coupon-message');
-            const code = input.value.trim().toUpperCase();
 
-            if (code === '') {
-                activeCoupon = null;
-                msg.classList.add('d-none');
-            } else {
-                activeCoupon = code;
-                msg.innerHTML = `<span class="text-muted"><div class="spinner-border spinner-border-sm" role="status"></div> Verifying...</span>`;
-                msg.classList.remove('d-none');
-            }
-
-            debouncedInit(); // Triggers server-side validation & price update
-        }
 
         // Timer
         let time = 600;
@@ -1031,8 +1005,7 @@
                     body: JSON.stringify({
                         items: {
                             packageId: currentPack,
-                            upgrades: upgradesList,
-                            coupon: activeCoupon
+                            upgrades: upgradesList
                         },
                         email: email
                     }),
@@ -1061,15 +1034,7 @@
                     serverCalculatedTotal = data.amount;
                     document.getElementById('total-price').innerText = "$" + data.amount.toFixed(2);
 
-                    const msg = document.getElementById('coupon-message');
-                    if (activeCoupon) {
-                        if (data.discount > 0) {
-                            msg.innerHTML = `<span class="text-success">Success: $${data.discount.toFixed(2)} discount applied!</span>`;
-                        } else {
-                            msg.innerHTML = `<span class="text-danger">Invalid or expired code.</span>`;
-                            activeCoupon = null;
-                        }
-                    }
+
                 }
 
                 const appearance = {
