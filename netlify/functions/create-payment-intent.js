@@ -104,4 +104,11 @@ export default async (req, context) => {
                 headers: { 'Content-Type': 'application/json' }
             });
         }
-    };
+    } catch (initError) {
+        console.error("Initialization Error:", initError);
+        return new Response(JSON.stringify({ error: `Init Error: ${initError.message}` }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+};
