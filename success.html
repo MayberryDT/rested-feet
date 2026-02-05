@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Order Confirmed | RestedFeet™</title>
+    <link rel="icon" type="image/png" href="RFLogo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --brand-green: #56766b;
+            --brand-green-dark: #3e554d;
+            --accent-red: #cf000a;
+            --text-dark: #1a1a1a;
+            --grey: #6c757d;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Logo Header - Matches Main Page & Checkout */
+        .top-logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+        }
+
+        .top-logo {
+            max-width: 280px;
+            height: auto;
+            display: block;
+        }
+
+        /* Hero Success Section */
+        .success-hero {
+            background-color: var(--light-bg);
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-hero h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .success-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--grey);
+            font-size: 1.1rem;
+        }
+
+        /* Section Layout */
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 15px;
+        }
+
+        .section-tag {
+            color: var(--brand-green);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+
+        .section-heading {
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+        }
+
+        /* Vault Card Grid */
+        .vault-card {
+            background: #fff;
+            border: 1px solid #eef0f2;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            position: relative;
+        }
+
+        .vault-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(86, 118, 107, 0.12);
+            border-color: var(--brand-green);
+        }
+
+        .vault-icon {
+            font-size: 3rem;
+            color: var(--brand-green);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .vault-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            min-height: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+        }
+
+        .btn-download {
+            background-color: var(--brand-green);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            width: 100%;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-download:hover {
+            background-color: var(--brand-green-dark);
+            color: white;
+            box-shadow: 0 4px 12px rgba(86, 118, 107, 0.3);
+        }
+
+        /* Timeline / Steps */
+        .timeline-box {
+            background: #fcfcfc;
+            border: 1px solid #f0f0f0;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-marker {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-right: 2rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.completed .step-marker {
+            background-color: #d1e7dd;
+            color: #198754;
+        }
+
+        .step-item.active .step-marker {
+            background-color: var(--brand-green);
+            color: #fff;
+            box-shadow: 0 0 0 8px rgba(86, 118, 107, 0.1);
+        }
+
+        .step-item.pending .step-marker {
+            background-color: #eee;
+            color: #999;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            height: calc(100% - 40px);
+            width: 2px;
+            background-color: #eee;
+            z-index: 1;
+        }
+
+        .step-content h4 {
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
+            font-size: 1.15rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--grey);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .support-cta {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .phone-link {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--brand-green);
+            text-decoration: none;
+            display: block;
+            margin: 1rem 0;
+            transition: color 0.2s;
+        }
+
+        .phone-link:hover {
+            color: var(--brand-green-dark);
+        }
+
+        .auth-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            color: var(--text-dark);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .success-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .step-marker {
+                width: 50px;
+                height: 50px;
+                margin-right: 1rem;
+            }
+
+            .step-item:not(:last-child)::after {
+                left: 25px;
+            }
+
+            .phone-link {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-logo-container">
+        <img src="RestedFeetLogo.jpeg" alt="RestedFeet Logo" class="top-logo">
+    </header>
+
+    <!-- Hero -->
+    <section class="success-hero">
+        <div class="container">
+            <div class="success-badge">
+                <i class="bi bi-check-circle-fill"></i> ORDER CONFIRMED
+            </div>
+            <h1>SUCCESS! <br>Your Relief Kit is Being Prepared.</h1>
+            <p>We’ve sent a confirmation email to your inbox. Your physical socks will ship from our USA facility in
+                Alabama within 12-24 hours.</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+
+        <!-- Digital Vault -->
+        <span class="section-tag">Your Digital Access</span>
+        <h2 class="section-heading">Unlock Your Digital Relief Vault</h2>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="vault-card">
+                    <div class="vault-icon"><i class="bi bi-journal-medical"></i></div>
+                    <h3 class="vault-title">Neuropathy<br>Sleep Protocol</h3>
+                    <a href="#" class="btn-download">Download Guide</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="vault-card">
+                    <div class="vault-icon"><i class="bi bi-list-check"></i></div>
+                    <h3 class="vault-title">"Nerve-Calming"<br>7-Day Checklist</h3>
+                    <a href="#" class="btn-download">Download Checklist</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="vault-card">
+                    <div class="vault-icon"><i class="bi bi-chat-heart"></i></div>
+                    <h3 class="vault-title">"Doctor's Office"<br>Conversation Guide</h3>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="vault-card">
+                    <div class="vault-icon"><i class="bi bi-basket3"></i></div>
+                    <h3 class="vault-title">"Anti-Inflammatory"<br>Grocery List</h3>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="vault-card">
+                    <div class="vault-icon"><i class="bi bi-patch-check-fill"></i></div>
+                    <h3 class="vault-title">Your 90-Night<br>Sleep Pass</h3>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Timeline -->
+        <div class="timeline-box">
+            <span class="section-tag" style="text-align: left;">Live Tracking</span>
+            <h3 class="fw-bold mb-5">What Happens Next</h3>
+
+            <div class="step-item completed">
+                <div class="step-marker"><i class="bi bi-check-lg"></i></div>
+                <div class="step-content">
+                    <h4>Instant Digital Access</h4>
+                    <p>Your premium bonuses have been unlocked for immediate download above.</p>
+                </div>
+            </div>
+
+            <div class="step-item active">
+                <div class="step-marker">
+                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                </div>
+                <div class="step-content">
+                    <h4>Quality Inspection & Packaging</h4>
+                    <p>Our team in Alabama is hand-packing your order to ensure perfect condition upon arrival.</p>
+                </div>
+            </div>
+
+            <div class="step-item pending">
+                <div class="step-marker"><i class="bi bi-truck"></i></div>
+                <div class="step-content">
+                    <h4>Tracking Number Dispatched</h4>
+                    <p>A USPS/UPS tracking number will be sent to your email address within 24 hours.</p>
+                </div>
+            </div>
+
+            <div class="step-item pending">
+                <div class="step-marker"><i class="bi bi-moon-stars"></i></div>
+                <div class="step-content">
+                    <h4>Your 90-Night Sleep Test Begins</h4>
+                    <p>Experience the transformation of deep, restful sleep risk-free.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="support-cta">
+                <h3 class="fw-bold mb-3">Questions about your order?</h3>
+                <p class="text-muted">Our Senior Priority Specialists are standing by.</p>
+                <a href="tel:18447783338" class="phone-link">1-844-778-3338</a>
+            </div>
+
+            <div class="auth-badge">
+                <i class="bi bi-flag-fill text-danger"></i> USA Family Owned — Est. 2015
+            </div>
+
+            <div class="mt-5 pt-5 opacity-50 small">
+                <img src="RFLogo.png" alt="RestedFeet Icon"
+                    style="width: 40px; margin-bottom: 1rem; filter: grayscale(1);">
+                <p>© 2026 RestedFeet™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

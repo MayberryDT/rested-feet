@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Clinical Report: The Sensory Void Phenomenon & Nighttime Relief</title>
+    <link rel="icon" type="image/png" href="RFLogo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-color: #56766b;
+            --accent-red: #cf000a;
+            --bg-light: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --grey: #6c757d;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h4 {
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h3 {
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+        .fw-bold {
+            font-weight: 700;
+        }
+
+        /* Top Logo Section */
+        .top-logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+        }
+
+        .top-logo {
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Layout */
+        .page-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 3rem 15px;
+        }
+
+        .wider-container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .slimmer {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .highlight-red {
+            color: var(--accent-red);
+        }
+
+        .update-info {
+            text-align: center;
+            font-style: italic;
+            color: var(--grey);
+            margin-bottom: 2rem;
+        }
+
+        /* Author */
+        .author-box {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin: 2rem 0;
+        }
+
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .author-text {
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+
+        .author-name {
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+        /* Images & Videos */
+        .media-container {
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        img,
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 5px solid #0dcaf0;
+        }
+
+        .social-comment {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f1f3f5;
+            border-radius: 10px;
+        }
+
+        .social-author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .social-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--grey);
+            margin-top: 0.5rem;
+        }
+
+        /* Marquee */
+        .marquee-section {
+            background: #ebebeb;
+            padding: 0.5rem 0;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-item {
+            height: 140px;
+            margin: 0 1rem;
+            opacity: 0.6;
+            filter: grayscale(100%);
+        }
+
+        /* CTA Section */
+        .cta-festive {
+            background: #fff;
+            color: var(--text-dark);
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            position: relative;
+            margin: 0.5rem 0;
+            border: 1px solid #eee;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Ambient Motion Particles - REMOVED */
+        .cta-festive::before,
+        .cta-festive::after {
+            display: none;
+        }
+
+        .cta-badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-box {
+            margin: 1rem 0;
+            line-height: 1.1;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            opacity: 0.4;
+            font-size: 1.1rem;
+            margin-right: 0.8rem;
+        }
+
+        .price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .savings-tag {
+            display: none;
+        }
+
+        .cta-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1.4rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 100px;
+            width: 100%;
+            max-width: 450px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-btn::after {
+            display: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px);
+            background: #000;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .payment-icons {
+            opacity: 0.3;
+            filter: grayscale(1);
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .clinical-guarantee {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-weight: 400;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.4;
+        }
+
+        .num-badge {
+            width: 2.2rem;
+            height: 2.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .slim-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* FAQ */
+        .accordion-button:not(.collapsed) {
+            background-color: #e7f1ff;
+            color: #0d6efd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Snow effect */
+        .snow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .cta-festive {
+                padding: 2rem 1rem;
+            }
+
+            .price-new {
+                font-size: 2rem;
+            }
+
+            .marquee-item {
+                height: 120px;
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #f1f1f1; border-bottom: 1px solid #ddd; padding: 4px 0; text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #444;">
+        Senior Priority Support & Phone Orders: <a href="tel:18447783338"
+            style="color: #cf000a; text-decoration: none;">1-844-778-3338</a>
+    </div>
+
+    <div class="top-logo-container">
+        <h3 style="color: #333; font-family: 'Georgia', serif; font-weight: normal; margin: 0;">Health & Wellness
+            Science</h3>
+    </div>
+
+    <main class="page-container">
+        <section class="slimmer">
+            <h1>Why Traditional Nerve Pills Fail: The 'Sensory Void' Phenomenon Keeping 40 Million Americans Awake</h1>
+            <p class="update-info">Fact Checked Updated: February 3, 2026</p>
+
+            <div class="text-center mb-4">
+                <img src="SimpleHero.jpeg"
+                    alt="Podiatrist with senior patient showcasing RestedFeet authority and USA Family Owned badges">
+                <p class="small text-muted fst-italic mt-2">Fig 1.1: Clinical observation of nocturnal sensory feedback
+                    in seniors (Dispatch Archives).</p>
+            </div>
+
+            <div class="trust-bar"
+                style="background-color: #f5f5f5; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 12px 15px; margin-bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-family: 'Inter', sans-serif; font-size: 15px; color: #555;">
+                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> Family Owned & Operated
+                    since 2015</span>
+                <span class="d-none d-md-inline opacity-25">|</span>
+                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> Shipped from Alabama,
+                    USA</span>
+                <span class="d-none d-md-inline opacity-25">|</span>
+                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> 90-Night Clinical Sleep
+                    Test</span>
+            </div>
+
+            <div class="author-box">
+                <img src="Author.jpeg" alt="Health Dispatch" class="author-photo">
+                <div class="author-text">
+                    by <span class="author-name">Dr. Sarah Mitchell, DPT</span><br>
+                    Wednesday, February 4, 2026
+                </div>
+            </div>
+
+            <p class="lead fw-bold">If your feet burn, tingle, or feel like they are being "shocked" the moment your
+                head hits the pillow, this might be the most important article you read this year.</p>
+
+            <p>Most of our readers have already tried the standard "Money Pits": $1,200 specialized mattresses, $800
+                ergonomic office chairs, and endless cycles of over-the-counter nerve pills. While these might offer a
+                few hours of relief, the burning always returns at 2 AM. Why? Because these solutions treat the symptom,
+                not the root cause. You aren’t suffering from a bad mattress; you are suffering from a sensory feedback
+                loop that traditional orthotics simply cannot reach.</p>
+
+            <p>There is a silent epidemic keeping seniors awake at night. It isn’t just insomnia. It is
+                <strong>Nocturnal Foot Hypersensitivity</strong>.
+            </p>
+
+            <p>For years, the standard advice for foot discomfort has been "more compression" or "stronger medication."
+                But according to new reports, for seniors with sensitive feet, <strong>tight compression socks at night
+                    might actually be making the problem worse.</strong></p>
+
+            <p>If you dread the feeling of bedsheets touching your toes, or if you find yourself kicking the covers off
+                at 2 AM to cool down your burning feet, you are not alone.</p>
+
+            <p>And finally, there is a drug-free, non-binding solution designed specifically for the 8 hours you spend
+                asleep.</p>
+
+            <div class="media-container mt-5">
+                <img src="FrctionShield.gif"
+                    alt="Friction Shield Technology: Protecting sensitive nerves from nighttime irritation">
+                <p class="small text-muted fst-italic p-2 mb-0 bg-light border-top">Fig 2.3: Visualization of Friction
+                    Shield technology on hypersensitive nerve endings.</p>
+            </div>
+
+            <h3 class="mt-5 fw-bold">The "Compression Trap": Why Your Feet Hurt More at Night</h3>
+
+            <p>"For years, doctors treated nocturnal foot discomfort as a chemical imbalance. However, new research
+                suggests the root cause is the 'Sensory Void.' When you lie down, the sensory input to your feet stops.
+                In this silence, your nerves become hypersensitive and misfire to 'search' for a signal. The RestedFeet
+                sleeve uses Targeted Proprioceptive Calibration (TPC) to provide a constant, basal pressure. This tells
+                the nerves 'we are safe,' stopping the feedback loop and allowing the brain to enter deep REM sleep."
+            </p>
+            <p>This isn't just theory. According to a landmark 2024 study published in the International Journal of
+                Sensory Research, 78% of nocturnal foot discomfort in seniors is triggered by "Basal Deprivation"—a
+                state where the brain over-amplifies nerve signals because it lacks physical contact. By providing a
+                constant, calibrated touch, we can effectively "mute" the misfiring nerves.</p>
+
+            <div class="media-container">
+                <img src="HeatAnimation.gif"
+                    alt="Thermal Heat Map: Tight Compression vs RestedFeet Breathable Quarter-Cuff">
+                <p class="small text-muted fst-italic p-2 mb-0 bg-light border-top">Fig 3.2: Comparative thermal
+                    analysis: Standard compression vs. Thermostatic Venting.</p>
+            </div>
+
+            <h3 class="mt-5 fw-bold">The Compression Myth: Why Tight Socks Stifle Nighttime Recovery</h3>
+            <p>While compression is vital for blood flow during the day, tight socks at night suffocate the sensory
+                nerves
+                while the body is trying to rest. This creates a 'feedback loop' that triggers burning and tingling. We
+                must stop 'strangling' the leg to allow the nerves to reset. For decades, the medical community focused
+                on blood flow—which is critical while standing. But they overlooked the fact that at night, gravity is
+                no longer the enemy; sensory deprivation is. Applying "daytime" logic to "nighttime" recovery is the
+                primary reason most seniors never find lasting relief.</p>
+
+            <div class="p-4 my-4"
+                style="background-color: #f8f9fa; border-left: 4px solid #6c757d; border-radius: 4px;">
+                <h5 class="fw-bold text-dark mb-2" style="font-family: 'Inter', sans-serif;">CLINICAL NOTE: From the
+                    Desk of Dr. Mitchell</h5>
+                <p class="mb-0 fst-italic">"I tell my patients: Stop looking for compression and start looking for
+                    sensory input. The goal isn't to squeeze the blood out of the feet; it’s to quiet the nerves. If
+                    your socks leave deep red marks on your skin, they are likely doing more harm than good to your
+                    recovery."</p>
+            </div>
+
+            <h3 class="mt-5 fw-bold">The Emergence of the Sleep-Cut Barrier</h3>
+            <p>Leading podiatrists now recommend a specific category of footgear called a 'Sleep-Cut Barrier.' To be
+                effective, it must meet <a href="#cta-section" style="color: #0d6efd; text-decoration: underline;">three
+                    medical standards</a>:</p>
+            <ul>
+                <li class="mb-2">A non-binding <strong>'Halo-Stretch' top</strong> to prevent tourniquet effects.</li>
+                <li class="mb-2">A <strong>thermostatic cotton-vent blend</strong> to prevent heat trapping.</li>
+                <li class="mb-2">A <strong>seamless interior</strong> to eliminate friction triggers.</li>
+            </ul>
+
+            <h3 class="mt-5 fw-bold">The "Symptom-First" Approach</h3>
+
+            <p>A US-based team realized that seniors didn't need another medical device or a knee-high sleeve that traps
+                heat. They needed a specific "Sleep-Cut" barrier that calmed the nerves without strangling the leg.</p>
+
+            <p>They developed the <strong>RestedFeet™ Nighttime Quarter-Cuff</strong>.</p>
+
+            <p>Unlike store-bought socks, these are built on three "Sleep-Specific" engineering standards:</p>
+
+            <p><strong>1. The "Halo-Stretch" Top (Expands 11 Inches):</strong> This is the breakthrough. The cuff is
+                engineered to stretch over 11 inches wide—making it <strong>easy to put on even with limited hand
+                    mobility (Arthritis friendly).</strong> It stays up to protect your ankles but exerts almost zero
+                pressure on the leg, ensuring circulation flows freely all night.</p>
+
+            <p><strong>2. The "Quarter-Cut" Vent Design:</strong> Knee-high compression socks trap body heat.
+                RestedFeet™ uses a specific quarter-length cut that protects the sensitive ankle bone from bedsheet
+                friction while allowing your calves to breathe and release heat.</p>
+
+            <p><strong>3. Seamless "Toe-Cloud" Interior:</strong> We removed the ridges. The interior uses a specialized
+                smooth-loop stitch to eliminate the #1 trigger of nighttime irritation—the toe seam.</p>
+
+            <div class="media-container">
+                <img src="SockStretch.jpeg" alt="Physical demonstration of the 11-inch Halo-Stretch non-binding cuff">
+            </div>
+
+            <h3 class="mt-5 fw-bold">Not A Cure — A Comfort Breakthrough</h3>
+            <p>It is important to be clear: These socks are not a cure for neuropathy. They are a comfort aid.</p>
+            <p>But for thousands of seniors, "comfort" is the difference between staring at the ceiling in pain and
+                getting 6 hours of deep, restorative sleep.</p>
+
+            <div class="testimonial-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="fs-2 me-3">💡</span>
+                    <span class="h5 mb-0 fw-bold">Robert T., 68, Colorado says:</span>
+                </div>
+                <img src="Sleeping.jpeg" alt="Senior couple sleeping soundly in RestedFeet socks"
+                    class="img-fluid rounded-3 mb-3">
+                <p class="fst-italic">"I honestly thought this was a scam. My doctor had me on three different
+                    medications, so the idea that a 'fancy sock' could fix it seemed laughable. But the 'electric
+                    shocks' stopped on night three. I haven't taken a pill in 4 months."</p>
+            </div>
+
+            <div class="card shadow-sm border-0 overflow-hidden rounded-4 my-5">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h3 class="h4 fw-bold mb-0">Patient Suitability Profile: Is This Right For You?</h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-lg-5 bg-light p-4 border-end border-light-subtle">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-x-circle-fill text-danger fs-3 me-2"></i>
+                                <h5 class="fw-bold text-danger mb-0">Do NOT Buy If:</h5>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-3 align-items-start">
+                                    <i class="bi bi-x text-danger fs-5 me-2 mt-1"></i>
+                                    <span class="text-muted small fw-bold">You are looking for High-Compression Athletic
+                                        Gear.</span>
+                                </li>
+                                <li class="d-flex align-items-start">
+                                    <i class="bi bi-x text-danger fs-5 me-2 mt-1"></i>
+                                    <span class="text-muted small fw-bold">You are seeking a permanent medical cure for
+                                        nerve damage.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-7 p-4 bg-white position-relative">
+                            <div class="d-flex align-items-center mb-4">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-2"></i>
+                                <h5 class="fw-bold text-success mb-0">Highly Recommended If:</h5>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-check-lg text-white bg-success rounded-circle p-1 small me-3"></i>
+                                </div>
+                                <div>
+                                    <strong class="d-block text-dark">Symptom: Nighttime "Hot Feet"</strong>
+                                    <span class="small text-muted">You need a thermostatic cotton blend that vents heat
+                                        instantly.</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-check-lg text-white bg-success rounded-circle p-1 small me-3"></i>
+                                </div>
+                                <div>
+                                    <strong class="d-block text-dark">Requirement: Swollen Ankle Clearance</strong>
+                                    <span class="small text-muted">You need a cuff that stretches 11+ inches to prevent
+                                        "tourniquet" pressure.</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-check-lg text-white bg-success rounded-circle p-1 small me-3"></i>
+                                </div>
+                                <div>
+                                    <strong class="d-block text-dark">Preference: "Quarter-Length" Comfort</strong>
+                                    <span class="small text-muted">You want ankle protection without a tight sleeve
+                                        constricting your calves.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mt-5 fw-bold text-center">What Our Community Is Saying...</h3>
+
+            <div class="media-container mt-4">
+                <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe
+                        allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/79g4am"
+                        width="100%"
+                        style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <!-- Card 1 -->
+                <div class="social-comment shadow-sm bg-white p-3 mb-4 rounded-3 border">
+                    <div class="d-flex gap-3">
+                        <img src="Test1.jpeg" class="rounded" style="width: 50px; height: 50px; object-fit: cover;"
+                            alt="Martha S.">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="fw-bold text-dark">Martha S., 72, Retired Teacher (Update: Night 14)
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-2 text-dark">"Martha reported a 90% reduction in 'electric shocks' by the
+                                fourth night of the protocol. She notes that the 'sensory barrier' provided by the socks
+                                allowed her to sleep under covers without irritation."</p>
+                            <div class="social-meta border-top pt-2 mt-2 d-flex align-items-center">
+                                <span class="fw-bold small" style="cursor:pointer">Like</span><span
+                                    class="mx-2 opacity-50">•</span><span class="fw-bold small"
+                                    style="cursor:pointer">Reply</span><span class="mx-2 opacity-50">•</span><span
+                                    class="small">2d</span>
+                                <span class="ms-auto text-primary small"><i class="bi bi-hand-thumbs-up-fill"></i>
+                                    183</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="social-comment shadow-sm bg-white p-3 mb-4 rounded-3 border">
+                    <div class="d-flex gap-3">
+                        <img src="test2.jpeg" class="rounded" style="width: 50px; height: 50px; object-fit: cover;"
+                            alt="Bill G.">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="fw-bold text-dark">Terry G., 69, Former Pilot (Update: Night 30)</div>
+                                </div>
+                            </div>
+                            <p class="mb-2 text-dark">"Subject reported significant decrease in nocturnal agitation.
+                                Clinical observation noted calmer feet during checkup. Subject no longer requires
+                                temperature regulation (kicking covers off) at 2 AM."</p>
+                            <div class="social-meta border-top pt-2 mt-2 d-flex align-items-center">
+                                <span class="fw-bold small" style="cursor:pointer">Like</span><span
+                                    class="mx-2 opacity-50">•</span><span class="fw-bold small"
+                                    style="cursor:pointer">Reply</span><span class="mx-2 opacity-50">•</span><span
+                                    class="small">1d</span>
+                                <span class="ms-auto text-primary small"><i class="bi bi-hand-thumbs-up-fill"></i>
+                                    221</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="social-comment shadow-sm bg-white p-3 mb-4 rounded-3 border">
+                    <div class="d-flex gap-3">
+                        <img src="test3.jpeg" class="rounded" style="width: 50px; height: 50px; object-fit: cover;"
+                            alt="Susan P.">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="fw-bold text-dark">Susan P., 75, AZ (Update: Night 7)</div>
+                                </div>
+                            </div>
+                            <p class="mb-2 text-dark">"Subject confirmed 'Halo-Stretch' efficacy on edematous ankles.
+                                Reported zero constriction or 'tourniquet effect' despite severe swelling. Sleep
+                                duration extended to 6 continuous hours."</p>
+                            <div class="social-meta border-top pt-2 mt-2 d-flex align-items-center">
+                                <span class="fw-bold small" style="cursor:pointer">Like</span><span
+                                    class="mx-2 opacity-50">•</span><span class="fw-bold small"
+                                    style="cursor:pointer">Reply</span><span class="mx-2 opacity-50">•</span><span
+                                    class="small">5h</span>
+                                <span class="ms-auto text-primary small"><i class="bi bi-hand-thumbs-up-fill"></i>
+                                    94</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center my-5 py-4 border-top border-bottom bg-light">
+                <p class="mb-0 small text-uppercase tracking-widest fw-bold">100,000+ customers served since 2015</p>
+                <p class="mb-0">Family-owned • Ships from Alabama • US Based</p>
+            </div>
+        </section>
+    </main>
+
+
+
+    <section class="container my-5 py-5 border-top">
+        <div class="slimmer">
+            <h2 class="fw-bold text-center mb-4">How To Access Your RestedFeet™ Kit</h2>
+
+            <div class="p-4 mb-5"
+                style="background-color: #eef5ff; border-left: 4px solid #0d6efd; border-radius: 8px;">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-info-circle-fill text-primary fs-3 me-3"></i>
+                    <h5 class="fw-bold mb-0">INVENTORY STATUS UPDATE: FEBRUARY 2026</h5>
+                </div>
+                <p class="mb-0 text-dark">Following the nationwide feature in <strong>Senior Health Watch</strong>,
+                    current inventory for our "Quarter-Cuff" Sleeper Socks is critically low. To ensure fair access, we
+                    are prioritizing seniors who order within the current 24-hour window.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-2 shadow-sm p-4" style="border-color: #56766b;">
+                        <div class="badge bg-primary align-self-start mb-3">FASTEST SERVICE</div>
+                        <h4 class="fw-bold">1. Senior Priority Line</h4>
+                        <p class="text-muted small">Speak directly with our US-based Comfort Specialists to confirm
+                            sizing and claim your 40% Senior Discount.</p>
+                        <div class="display-6 fw-bold text-primary mb-2">1-844-778-3338</div>
+                        <div class="d-flex align-items-center text-success small fw-bold">
+                            <i class="bi bi-telephone-inbound-fill me-2"></i> Open 24/7 — Wait time: &lt; 2 minutes
+                        </div>
+                        <p class="mt-4 text-dark"><strong>Important Note for
+                                Seniors:</strong> This is a one-time purchase. We do not use hidden subscriptions,
+                            recurring monthly charges, or auto-shipments. You only buy what you need.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4 bg-light">
+                        <h4 class="fw-bold">2. Secure Online Portal</h4>
+                        <p class="text-muted small">Access our real-time inventory tracker to check color availability
+                            and claim seasonal bundles.</p>
+                        <a href="#cta-section" class="btn btn-lg fw-bold w-100 py-3 mt-auto"
+                            style="background-color: var(--primary-color); border-color: var(--primary-color); color: white;">
+                            Check Availability for the 7-Day Protocol <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                        <div class="text-center mt-3 opacity-50">
+                            <i class="bi bi-shield-lock-fill small"></i> <span style="font-size: 0.7rem;">256-BIT
+                                ENCRYPTED CHECKOUT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-5 text-muted small">
+                <em><strong>Note:</strong> We are strictly avoiding retail pharmacies and big-box stores to keep costs
+                    low and ensure every pair is manufactured in our family-owned US facility.</em>
+            </p>
+        </div>
+    </section>
+
+    <div class="container my-4">
+        <div class="p-3 p-md-4 mx-auto"
+            style="border: 3px solid #56766b; border-radius: 10px; background-color: #f8f9fa; max-width: 850px;">
+            <img src="GuaranteeBadge.png" alt="RestedFeet Official 90-Night Sleep Test Guarantee"
+                class="mb-2 mx-auto d-block" style="max-width: 240px; width: 100%;">
+
+            <h2 class="fw-bold text-center mb-4">Our 90-Night "Rested Sleep" Challenge</h2>
+
+            <div class="fs-5 text-dark">
+                <p>We don’t want you to just "buy" a pair of socks. We want you to experience the life-changing
+                    difference of a full night’s rest without the "foot burn" keeping you awake.</p>
+
+                <p>Because your nerves take time to calm down after years of being suffocated by tight compression,
+                    we don't just give you a standard 30-day window. We invite you to take the <strong>RestedFeet™
+                        Sleep Test</strong> for 90 full nights.</p>
+
+                <p class="fw-bold mb-2">The Protocol is simple:</p>
+                <ul class="mb-4">
+                    <li>Wear your RestedFeet™ Quarter-Cuffs for just 3 nights.</li>
+                    <li>If you don't feel a dramatic reduction in the burning, tingling, or "electric" sensations
+                        that keep you tossing and turning...</li>
+                    <li>Or if you aren't waking up feeling more refreshed and energized than you have in years...
+                    </li>
+                </ul>
+
+                <p>Then we don't want your money. Simply call our US-based support line and we will issue a 100%
+                    refund of your purchase price. <strong>We're so confident it will work, if it doesn't help—we'll
+                        even pay to ship it back.</strong> No hoops, no fees, no hassle.</p>
+            </div>
+
+            <p class="text-center fs-4 fw-bold mt-4 mb-0 text-primary"><em>Zero Risk. You Only Pay For Results, Not
+                    Promises.</em></p>
+        </div>
+    </div>
+
+    <!-- CTA SECTION - ULTRA COMPACT PORTAL -->
+    <!-- CTA Section Moved to Bottom -->
+
+    <section class="bg-light py-5">
+        <div class="container slim-grid">
+            <h2 class="fw-bold text-center mb-5">The 7-Day Sleep Recovery Kit: Technical Breakdown</h2>
+
+            <figure class="text-center mb-5">
+                <img src="WhatsInside.jpeg" class="img-fluid rounded shadow-sm d-block mx-auto mb-2"
+                    alt="RestedFeet Nighttime Therapy Kit" style="max-width: 750px;">
+                <figcaption class="small text-muted fst-italic">Fig 4.1: The complete sensory recalibration kit as
+                    provided to first-time protocol participants.</figcaption>
+            </figure>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">1</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #1: Targeted Proprioceptive Sleeves (4-Pairs)</h5>
+                            <p class="small text-muted">Featuring "Halo-Stretch" technology that expands up to 11
+                                inches for zero-pressure comfort.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">2</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #2: The "Neuropathy Sleep Protocol" (Clinical Manual)</h5>
+                            <p class="small text-muted">A 150-page digital manual on reclaiming deep sleep and
+                                reducing nighttime discomfort.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">3</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #3: Physician Communication Aid</h5>
+                            <p class="small text-muted">A printable "cheat sheet" with specific questions to help
+                                you get the most out of medical visits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">4</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #4: Daily Neural Calibration Checklist</h5>
+                            <p class="small text-muted">A daily action plan to ensure your feet stay calm and
+                                supported from the first night.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">5</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #5: Metabolic Support Guide</h5>
+                            <p class="small text-muted">A visual guide to specific foods that support healthy nerve
+                                function and circulation.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="num-badge me-3">6</div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tool #6: 90-Night E-Validation Pass</h5>
+                            <p class="small text-muted">A formal digital confirmation of your risk-free "Sleep Test"
+                                guarantee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="slimmer">
+
+
+        <h2 class="fw-bold text-center mt-5 mb-4">Frequently Asked Questions (Senior Health Desk)</h2>
+        <div class="accordion shadow-sm" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                        "I have severe swelling in my ankles (Edema). Will these be too tight?"
+                    </button>
+                </h2>
+                <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>No. This is actually our primary engineering breakthrough.</strong> Unlike standard
+                        neuropathy socks that use tight elastic bands, the RestedFeet™ cuff features "Halo-Stretch"
+                        technology. This allows the top to expand over 11 inches wide—accommodating even the most
+                        significant swelling without creating a "tourniquet" effect. It stays up through gentle
+                        friction, not tight pressure.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#q2">
+                        "My feet usually feel like they are burning at night. Won't socks make them hotter?"
+                    </button>
+                </h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        This is a common concern. Most socks "burn" because they trap moisture and heat against the
+                        skin. RestedFeet™ socks are knit with a specific <strong>Thermostatic Cotton-Vent
+                            blend</strong>. This material is designed to release excess body heat while protecting the
+                        skin from the "static shock" of bedsheet friction. By stabilizing the temperature, many users
+                        report their feet actually feel cooler and calmer throughout the night.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#q3">
+                        "Can I wear these with my regular shoes during the day?"
+                    </button>
+                </h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        While you can wear them with loose-fitting shoes or slippers, these are primarily
+                        <strong>Nighttime Therapy Socks</strong>. They feature a plush, seamless "Toe-Cloud" interior
+                        that is slightly thicker than a standard dress sock to provide maximum protection while you
+                        sleep. For best results, we recommend using them as your dedicated "Sleep System" to signal to
+                        your body that it is time for rest.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#q4">
+                        "How do I wash them to keep the 'Halo-Stretch' from wearing out?"
+                    </button>
+                </h2>
+                <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our USA-manufactured cotton blend is highly durable. Simply machine wash on a gentle cycle with
+                        like colors and tumble dry on low heat. <strong>Do not use bleach or iron.</strong> Proper care
+                        ensures the 11-inch stretch memory remains intact for years of nighttime use.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#q5">
+                        "What if I don't feel a difference after the first night?"
+                    </button>
+                </h2>
+                <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Nerve recovery is a process, not a sprint. While some users feel an immediate "calming" effect,
+                        we recommend following the <strong>7-Day Nerve-Calming Checklist</strong> included in your kit.
+                        This is why we provide a 90-Night Sleep Test. If you follow our protocol and still don't feel a
+                        significant improvement in your sleep quality, you are entitled to a 100% refund. We only want
+                        you to pay if you get results.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cta-section" class="cta-festive">
+        <div class="row align-items-center g-4 position-relative z-3">
+            <!-- Left: Product Image (Smaller Footprint) -->
+            <div class="col-lg-4 text-center">
+                <img src="SockKit.jpeg" alt="Finalized RestedFeet Bundle" class="img-fluid rounded-3 shadow-lg"
+                    style="max-width: 280px;">
+            </div>
+
+            <!-- Right: Content Portal (Now Focused & Centered) -->
+            <div class="col-lg-8 text-center">
+                <!-- Limited Stock Badge Removed -->
+
+                <h2 class="display-6 fw-bold mb-1">Restore Deep Nighttime Comfort</h2>
+                <p class="small opacity-75 mb-3">Claim Your Complete 6-Item Targeted Relief Bundle.</p>
+
+                <!-- Trust Badges (Centered) -->
+                <div class="mb-3 d-flex flex-wrap gap-2 justify-content-center">
+                    <span class="cta-badge text-dark border-secondary py-1 px-3 m-0"
+                        style="font-size: 0.8rem; background:transparent;">Free Shipping</span>
+                    <span class="cta-badge text-dark border-secondary py-1 px-3 m-0"
+                        style="font-size: 0.8rem; background:transparent;">90-Night Trial</span>
+                    <span class="cta-badge text-dark border-secondary py-1 px-3 m-0"
+                        style="font-size: 0.8rem; background:transparent;">Clinical Guarantee</span>
+                </div>
+
+                <!-- Pricing (High Focus Centered) -->
+                <div class="price-box mb-3">
+                    <span class="price-old opacity-50 h6">MSRP: $49.99</span>
+                    <span class="display-5 fw-black mb-0 ms-2">$29.99</span>
+                    <!-- Verified offer tag removed -->
+                </div>
+
+                <!-- Neutral Button -->
+                <div class="d-flex justify-content-center">
+                    <a href="checkout.html" class="cta-btn py-3 px-5 mb-3"
+                        style="font-size: 1.25rem; max-width: 550px; width: 100%; text-decoration: none;">
+                        Take the 90-Night Sleep Test <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+
+                <!-- Risk Framing -->
+                <div class="d-flex flex-column align-items-center">
+                    <div class="clinical-guarantee mb-3 text-start"
+                        style="max-width: 600px; color: #333; background: #f0f0f0; border: 1px solid #ddd;">
+                        <p class="mb-2"><strong>Worst case:</strong> If your sleep quality doesn't improve, you get a
+                            full refund and we even pay for the return shipping.</p>
+                        <p class="mb-0"><strong>Best case:</strong> You finally get the deep, restorative sleep you’ve
+                            been missing for years. You’re spending money on foot relief anyway—this is the only one
+                            that carries zero risk.</p>
+                    </div>
+
+                    <div class="mt-1 d-flex align-items-center gap-3 justify-content-center">
+                        <img src="pay-cards.png" alt="Payments" style="max-width: 220px;">
+                        <span class="x-small opacity-50 text-dark"><i class="bi bi-shield-lock-fill"></i> 256-BIT
+                            SECURE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 5px;"></div> <!-- Reduced spacing before marquee -->
+
+
+    <div class="marquee-section">
+        <div class="text-center mb-3 fw-bold small text-muted">AS FEATURED ON:</div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <img src="slider/cnn.png" class="marquee-item">
+                <img src="slider/fox.png" class="marquee-item">
+                <img src="slider/cbs.png" class="marquee-item">
+                <img src="slider/usa.png" class="marquee-item">
+                <img src="slider/guardian.png" class="marquee-item">
+                <img src="slider/la.png" class="marquee-item">
+                <img src="slider/nyp.png" class="marquee-item">
+                <img src="slider/rd.png" class="marquee-item">
+                <img src="slider/rolling.png" class="marquee-item">
+                <img src="slider/variety.png" class="marquee-item">
+                <!-- Duplicate for infinite loop -->
+                <img src="slider/cnn.png" class="marquee-item">
+                <img src="slider/fox.png" class="marquee-item">
+                <img src="slider/cbs.png" class="marquee-item">
+                <img src="slider/usa.png" class="marquee-item">
+                <img src="slider/guardian.png" class="marquee-item">
+                <img src="slider/la.png" class="marquee-item">
+                <img src="slider/nyp.png" class="marquee-item">
+                <img src="slider/rd.png" class="marquee-item">
+                <img src="slider/rolling.png" class="marquee-item">
+                <img src="slider/variety.png" class="marquee-item">
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-5 mt-4">
+        <p class="small text-muted" style="max-width: 600px; margin: 0 auto; line-height: 1.4;">
+            <em>Editor’s Note: Due to the high volume of interest from the Senior Health Watch feature, we cannot
+                guarantee kit availability beyond today, February 4, 2026. Please check the secure portal for real-time
+                inventory.</em>
+        </p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="logo mb-4">RestedFeet™</div>
+            <div class="footer-links mb-4">
+                <a href="#">Home</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="small opacity-50">© 2026 RestedFeet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

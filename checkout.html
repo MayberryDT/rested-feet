@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Portal: Finalize Your 90-Night Sleep Test Protocol</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- PayPal SDK -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AWcPSPCAmrtZ02Xt_X3Pirfmw2HmiAFQcZ6Xuw0FXRHy4wPaFAf8ZWZ2D-vlA7wdqWwMIYaa_AJw_Lod&currency=USD&disable-funding=credit,card,paylater"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="RFLogo.png">
+
+    <style>
+        :root {
+            --primary-green: #56766b;
+            --primary-dark: #212c3f;
+            --accent-green: #2ecc71;
+            --bg-color: #f4f6f8;
+            --border-color: #e1e4e8;
+            --text-dark: #212529;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-logo {
+            max-width: 160px;
+            display: block;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .secure-icon {
+            color: #27ae60;
+            font-size: 1.25rem;
+        }
+
+        /* Discount Bar (Mobile) & Top Banner */
+        .urgency-banner {
+            background-color: #fff3cd;
+            color: #856404;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-bottom: 1px solid #ffeeba;
+        }
+
+        /* Layout & Cards */
+        .wrapper {
+            padding: 20px 0;
+        }
+
+        .checkout-box {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header h4 {
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .section-icon {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+
+        /* Product Intro */
+        .intro-grid {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #edf2f7;
+        }
+
+        @media(max-width: 768px) {
+            .intro-grid {
+                flex-direction: column-reverse;
+            }
+        }
+
+        .custom-img {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .intro-img-container {
+            flex-shrink: 0;
+            width: 150px;
+        }
+
+        /* Quantity Grid */
+        .quantity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        @media(max-width: 576px) {
+            .quantity-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .quantity-item {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            background: #fff;
+            font-size: 16px;
+        }
+
+        .quantity-item:hover {
+            border-color: #a5d6a7;
+        }
+
+        .quantity-item.selected {
+            border-color: var(--primary-green);
+            background-color: #f9fcf9;
+            /* Very light tint if needed, or white */
+            box-shadow: 0 0 0 1px var(--primary-green);
+        }
+
+        .quantity-item.selected::after {
+            content: "\F26B";
+            font-family: "bootstrap-icons";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border: 2px solid white;
+        }
+
+        .quantity-item.starter-tier {
+            opacity: 0.85;
+            border-style: dashed;
+        }
+
+        .quantity-item.ultimate-tier {
+            border: 2px solid #56766b;
+            background: linear-gradient(180deg, #f9fcf9 0%, #ffffff 100%);
+            box-shadow: 0 0 20px rgba(86, 118, 107, 0.15);
+            transform: scale(1.02);
+            z-index: 5;
+        }
+
+        .ultimate-tier .bi-check-circle-fill {
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 2px rgba(25, 135, 84, 0.4));
+        }
+
+        .best-seller-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #27ae60;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+        }
+
+        .price-large {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 5px 0 0;
+        }
+
+        .save-badge {
+            color: #198754;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Form Fields */
+        .form-control {
+            border: 1px solid #ced4da;
+            padding: 12px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            background-color: #fcfcfc;
+        }
+
+        .form-control::placeholder {
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(86, 118, 107, 0.25);
+            border-color: var(--primary-green);
+        }
+
+        /* Addon Cards */
+        .addon-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 15px;
+            background: white;
+        }
+
+        .addon-card:hover {
+            border-color: var(--primary-green);
+        }
+
+        .addon-checkbox {
+            margin-top: 5px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-green);
+        }
+
+        /* Button */
+        .btn-massive {
+            width: 100%;
+            background: linear-gradient(180deg, #56766b 0%, #456259 100%);
+            color: white;
+            font-weight: 900;
+            font-size: 1.4rem;
+            padding: 20px;
+            border: none;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #2f453e;
+            transition: all 0.1s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            white-space: normal;
+            line-height: 1.2;
+        }
+
+        .payment-disclaimer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            margin: 1.5rem 0 0.5rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        #paypal-button-container {
+            width: 100%;
+            margin-bottom: 20px;
+            display: block;
+            min-height: 45px;
+        }
+
+        .btn-massive:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #2f453e;
+            color: white;
+        }
+
+        .btn-massive:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        /* Sidebar Review Cards */
+        .review-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #fff;
+            position: relative;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .review-pic {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Order Summary Sticky */
+        .order-summary-sticky {
+            position: sticky;
+            top: 20px;
+        }
+
+        /* SVG Icons */
+        .payment-icon {
+            margin-right: 4px;
+        }
+
+        /* Trusted Icons Row */
+        .trusted-icons {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .trusted-item img {
+            height: 40px;
+            margin-bottom: 5px;
+        }
+
+        .trusted-item p {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .blink-me {
+            animation: blinker 2s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .subscription-box {
+            background-color: #e9f5ee;
+            border: 2px solid #56766b;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #2f453e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trust-logos-sidebar {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .trust-logos-sidebar img {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+
+        .trust-logos-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #f1f1f1; border-bottom: 1px solid #ddd; padding: 6px 0; text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #444;">
+        Prefer to order by phone? Call our Senior Priority Line: <a href="tel:18447783338"
+            style="color: #cf000a; text-decoration: none; font-weight: 800;">1-844-778-3338</a>
+    </div>
+
+    <!-- Urgency Top Banner Removed -->
+
+    <!-- Header -->
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="RestedFeetLogo.jpeg" alt="RestedFeet" class="header-logo">
+            <div class="secure-badge">
+                <i class="bi bi-shield-lock-fill secure-icon"></i>
+                <span>SSL SECURE CHECKOUT</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container wrapper">
+        <div class="row">
+
+            <!-- Left Column: Main Content -->
+            <div class="col-lg-8 mb-4">
+
+                <!-- Reservation Status Header -->
+                <div class="card p-4 mb-4 border-success shadow-sm d-flex flex-row align-items-center"
+                    style="background: #fdfdfd; border-width: 2px;">
+                    <i class="bi bi-patch-check-fill text-success fs-1 me-3"></i>
+                    <div>
+                        <h5 class="mb-1 fw-bold text-dark">Reservation Status: Confirmed</h5>
+                        <p class="mb-0 text-muted" style="font-size: 15px;">Your 40% Senior Discount is active. Please
+                            complete your shipping details below to secure your 90-Night Sleep Pass.</p>
+                    </div>
+                </div>
+
+                <!-- Step 1: Product & Quantity -->
+                <div class="checkout-box">
+                    <div class="section-header">
+                        <i class="bi bi-1-square-fill section-icon"></i>
+                        <h4>Select Quantity</h4>
+                    </div>
+
+                    <div class="intro-grid mb-4">
+                        <div class="intro-img-container">
+                            <img src="SockKitCheckout.jpeg" class="custom-img" alt="Product">
+                        </div>
+                        <div>
+                            <p class="mb-0"><strong>Great Choice!</strong> The RestedFeet™ Quarter-Cuff is engineered
+                                to alleviate nighttime foot irritation instantly. Select your package below to lock in
+                                your discounted pricing today.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="quantity-grid">
+                        <!-- Pack 1 -->
+                        <div class="quantity-item starter-tier" onclick="selectPackage(1)" id="pkg-1">
+                            <h6 class="fw-bold mb-1">Starter Bundle</h6>
+                            <p class="save-badge mb-0 text-muted">Save $20.00</p>
+                            <div class="price-large text-muted">$29.99</div>
+                            <small class="text-decoration-line-through text-muted">$49.99</small>
+                            <div class="package-features mt-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-circle text-secondary me-2 small"></i>
+                                    <span class="small">1 Pack (4 Pairs) Socks</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-circle text-secondary me-2 small"></i>
+                                    <span class="small">Sleep Protocol (Digital)</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-circle text-secondary me-2 small"></i>
+                                    <span class="small">Nerve-Calming Checklist</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-circle text-secondary me-2 small"></i>
+                                    <span class="small">Conversation Guide</span>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-circle text-secondary me-2 small"></i>
+                                    <span class="small">90-Night Sleep Pass</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pack 2 (Best Seller) -->
+                        <div class="quantity-item selected" onclick="selectPackage(2)" id="pkg-2">
+                            <div class="best-seller-badge">MOST POPULAR</div>
+                            <h6 class="fw-bold mb-1">Standard Bundle</h6>
+                            <p class="save-badge mb-0">Save $50.03</p>
+                            <div class="price-large">$49.95</div>
+                            <small class="text-decoration-line-through text-muted">$99.98</small>
+                            <div class="package-features mt-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small fw-bold">2 Packs (8 Pairs) RestedFeet™ Socks</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">Neuropathy Sleep Protocol Guide</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">7-Day Nerve-Calming Checklist</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">Doctor's Office Conversation Guide</span>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">90-Night Sleep Pass (Guarantee)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pack 3 -->
+                        <div class="quantity-item ultimate-tier" onclick="selectPackage(3)" id="pkg-3">
+                            <div class="best-seller-badge bg-primary">BEST VALUE</div>
+                            <h6 class="fw-bold mb-1">Ultimate Relief Kit</h6>
+                            <p class="save-badge mb-0">Save $82.97</p>
+                            <div class="price-large">$67.00</div>
+                            <small class="text-decoration-line-through text-muted">$149.97</small>
+
+                            <div class="package-features mt-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small fw-bold">3 Packs (12 Pairs) RestedFeet™ Socks</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start fw-bold text-dark">The Neuropathy Sleep Protocol
+                                        (Master Guide)</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">7-Day Nerve-Calming Checklist</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small text-start">90-Night Sleep Pass (Official Guarantee)</span>
+                                </div>
+                                <div class="mt-2 py-1 border-top"
+                                    style="background: #e9f5ee; border-radius: 4px 4px 0 0;">
+                                    <span class="badge bg-success w-100">INCLUDES SENIOR-PRIORITY PHONE SUPPORT</span>
+                                </div>
+                                <div class="py-1 border-bottom"
+                                    style="background: #e9f5ee; border-radius: 0 0 4px 4px;">
+                                    <span class="badge bg-success w-100">INCLUDES FREE PRIORITY SHIPPING</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Contact Details -->
+                <div class="checkout-box">
+                    <div class="section-header">
+                        <i class="bi bi-2-square-fill section-icon"></i>
+                        <h4>Contact Details</h4>
+                    </div>
+
+                    <form id="payment-form">
+                        <input type="text" id="customer-name" class="form-control" placeholder="Full Name" required>
+                        <input type="email" id="customer-email" class="form-control" placeholder="Email Address"
+                            required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Shipping Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Zip Code" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 3: Optional Extras -->
+                <div class="checkout-box">
+                    <div class="section-header">
+                        <i class="bi bi-3-square-fill section-icon"></i>
+                        <h4>Optional Upgrades</h4>
+                    </div>
+
+                    <!-- Upgrade 1 -->
+                    <label class="addon-card">
+                        <input type="checkbox" class="addon-checkbox" id="upsell-1" onchange="updateTotal()">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between mb-1">
+                                <h6 class="fw-bold m-0">Lifetime Protection</h6>
+                                <span class="fw-bold text-success">$19.99</span>
+                            </div>
+                            <p class="small text-muted mb-0">Never buy socks again. If your RestedFeet™ ever lose their
+                                11-inch 'Halo-Stretch' elasticity, develop a snag, or simply wear out, we will ship you
+                                a brand-new pack for free, for life.</p>
+                        </div>
+                    </label>
+
+                    <!-- Upgrade 2 -->
+                    <label class="addon-card">
+                        <input type="checkbox" class="addon-checkbox" id="upsell-2" onchange="updateTotal()">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between mb-1">
+                                <h6 class="fw-bold m-0">Senior Priority Handling</h6>
+                                <span class="fw-bold text-success">$9.99</span>
+                            </div>
+                            <p class="small text-muted mb-0">Jump to the front of the line. Your order is flagged for
+                                immediate dispatch from our USA facility within 12 hours. Includes full shipping
+                                insurance against loss, damage, or theft for total peace of mind.</p>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Step 4: Payment -->
+                <div class="checkout-box">
+                    <div class="section-header">
+                        <i class="bi bi-4-square-fill section-icon"></i>
+                        <h4>Payment</h4>
+                    </div>
+
+                    <p class="small text-muted mb-3"><i class="bi bi-lock-fill"></i> All transactions are secure and
+                        encrypted.</p>
+
+                    <!-- Stripe Payment Element -->
+                    <div id="payment-element" class="mb-4">
+                        <!-- Stripe will inject the Payment Element here -->
+                        <div class="text-center p-4">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading Secure Payment...</span>
+                            </div>
+                            <p class="mt-2 small text-muted">Loading Secure Checkout...</p>
+                        </div>
+                    </div>
+
+                    <div id="payment-message" class="alert alert-danger d-none small"></div>
+
+                    <div class="subscription-box">
+                        <i class="bi bi-check-circle-fill fs-4 text-success"></i>
+                        <span>ONE-TIME PURCHASE: You will only be charged once today. No hidden subscriptions or
+                            auto-shipments.</span>
+                    </div>
+
+                    <button class="btn-massive" id="submit-button" onclick="handlePaymentSubmit()">
+                        <span>COMPLETE ORDER <br><span style="font-size: 0.9rem; font-weight: 500;">& ACTIVATE SLEEP
+                                TEST</span></span>
+                        <i class="bi bi-arrow-right-circle-fill display-6"></i>
+                    </button>
+
+                    <p class="payment-disclaimer">
+                        Both payment methods are protected by our 90-Night Sleep Challenge. <br>
+                        No subscriptions or recurring fees apply to either option.
+                    </p>
+
+                    <div id="paypal-button-container"></div>
+
+                    <div class="text-center mt-3">
+                        <img src="pay-cards.png" style="max-width: 250px; opacity: 0.8;" alt="Accepted Cards">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Summary & Reviews -->
+            <div class="col-lg-4">
+                <div class="order-summary-sticky">
+
+                    <!-- Order Summary Box -->
+                    <div class="checkout-box bg-white p-0 overflow-hidden">
+                        <div class="bg-light p-3 border-bottom">
+                            <h5 class="fw-bold m-0">Order Summary</h5>
+                        </div>
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span id="summary-name" class="fw-bold">Standard Bundle (8 Pairs)</span>
+                                <span class="fw-bold" id="summary-price">$49.95</span>
+                            </div>
+
+                            <!-- Included Content (Receipt Style) -->
+                            <div id="bonus-items-summary" class="border-bottom pb-2 mb-2">
+                                <div class="d-flex justify-content-between mb-1 small text-muted">
+                                    <span>The Neuropathy Sleep Protocol (Master Guide)</span>
+                                    <span class="text-success fw-bold">FREE</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1 small text-muted">
+                                    <span>7-Day Nerve-Calming Checklist</span>
+                                    <span class="text-success fw-bold">FREE</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1 small text-muted">
+                                    <span>Doctor’s Office Conversation Guide</span>
+                                    <span class="text-success fw-bold">FREE</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1 small text-muted">
+                                    <span>Anti-Inflammatory Kitchen List</span>
+                                    <span class="text-success fw-bold">FREE</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1 small text-muted">
+                                    <span>90-Night Sleep Pass (Protection)</span>
+                                    <span class="text-success fw-bold">FREE</span>
+                                </div>
+                                <div class="justify-content-between mb-1 small text-primary d-none"
+                                    id="summary-vip-support">
+                                    <span>Senior-Priority Phone Support</span>
+                                    <span class="text-success fw-bold">INCLUDED</span>
+                                </div>
+                                <div class="justify-content-between mb-1 small text-primary d-none"
+                                    id="summary-priority-shipping">
+                                    <span>Priority Insured Shipping</span>
+                                    <span class="text-success fw-bold">INCLUDED</span>
+                                </div>
+                            </div>
+
+                            <div class="justify-content-between mb-2 text-danger small d-none" id="summary-upsell-1">
+                                <span>+ Lifetime Protection</span>
+                                <span>$19.99</span>
+                            </div>
+                            <div class="justify-content-between mb-2 text-primary small d-none" id="summary-upsell-2">
+                                <span>+ Priority Handling</span>
+                                <span>$9.99</span>
+                            </div>
+                            <!-- Coupon Code Section -->
+                            <div class="mt-3 pt-2 border-top">
+                                <label class="small fw-bold text-muted mb-1">PROMO CODE</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" id="coupon-input" class="form-control"
+                                        placeholder="Enter code..." style="margin-bottom: 0;">
+                                    <button class="btn btn-dark btn-sm" type="button"
+                                        onclick="applyCoupon()">Apply</button>
+                                </div>
+                                <div id="coupon-message" class="small mt-1 d-none"></div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold fs-5">
+                                <span>Total:</span>
+                                <span class="text-success" id="total-price">$49.95</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee -->
+                    <div class="checkout-box text-center">
+                        <img src="GuaranteeBadge.png" style="width: 80px; margin-bottom: 10px;">
+                        <h6 class="fw-bold">90-Night Sleep Challenge</h6>
+                        <p class="small text-muted mb-0">Try them risk-free. If you don't sleep better, we refund every
+                            penny.</p>
+                    </div>
+
+                    <div class="trust-logos-sidebar">
+                        <div class="trust-logos-label">Recognized for Excellence in Senior Wellness</div>
+                        <div class="row g-2 px-3">
+                            <div class="col-4"><img src="slider/cnn.png" alt="CNN"></div>
+                            <div class="col-4"><img src="slider/fox.png" alt="FOX"></div>
+                            <div class="col-4"><img src="slider/cbs.png" alt="CBS"></div>
+                            <div class="col-4"><img src="slider/usa.png" alt="USA Today"></div>
+                            <div class="col-4"><img src="slider/la.png" alt="LA Times"></div>
+                            <div class="col-4"><img src="slider/nyp.png" alt="NY Post"></div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews -->
+                    <h6 class="fw-bold text-muted text-uppercase small mb-3">Verified Reviews</h6>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="Test1.jpeg" class="review-pic">
+                                <div>
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">Martha S.</div>
+                                    <div class="text-warning small"><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                </div>
+                            </div>
+                            <i class="bi bi-patch-check-fill text-primary"></i>
+                        </div>
+                        <p class="small text-muted fst-italic mb-0">"Finally, I can sleep under the covers without that
+                            'electric' shock feeling. I'm on my third pack!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="test2.jpeg" class="review-pic">
+                                <div>
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">Terry G.</div>
+                                    <div class="text-warning small"><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                </div>
+                            </div>
+                            <i class="bi bi-patch-check-fill text-primary"></i>
+                        </div>
+                        <p class="small text-muted fst-italic mb-0">"My podiatrist was shocked. I use these every night
+                            and the swelling has gone down significantly."</p>
+                    </div>
+
+                    <!-- Trust Icons (Footer of sidebar) -->
+                    <div class="trusted-icons">
+                        <div class="trusted-item">
+                            <i class="bi bi-truck fs-3 text-muted"></i>
+                            <p>Fast Shipping</p>
+                        </div>
+                        <div class="trusted-item">
+                            <i class="bi bi-shop fs-3 text-muted"></i>
+                            <p>USA Owned</p>
+                        </div>
+                        <div class="trusted-item">
+                            <i class="bi bi-people fs-3 text-muted"></i>
+                            <p>37k+ Orders</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 text-muted small">
+            &copy; 2026 RestedFeet. All Rights Reserved. <br>
+            <a href="#" class="text-muted">Privacy Policy</a> | <a href="#" class="text-muted">Terms of Service</a>
+        </div>
+    </div>
+
+
+    <script>
+        // Constants
+        const packages = {
+            1: { name: "Starter Bundle (4 Pairs)", price: 29.99 },
+            2: { name: "Standard Bundle (8 Pairs)", price: 49.95 },
+            3: { name: "Ultimate Relief Kit (12 Pairs)", price: 67.00 }
+        };
+        const upgradesOptions = {
+            1: { id: "upsell-1", price: 19.99 },
+            2: { id: "upsell-2", price: 9.99 }
+        };
+
+        let currentPack = 2; // Default
+        let activeCoupon = null;
+        let serverCalculatedTotal = 49.95; // Storage for PayPal handoff
+
+        function selectPackage(id) {
+            currentPack = id;
+            // UI
+            document.querySelectorAll('.quantity-item').forEach(el => el.classList.remove('selected'));
+            document.getElementById('pkg-' + id).classList.add('selected');
+            updateTotal();
+            debouncedInit(); // Update Stripe intent
+        }
+
+        function updateTotal() {
+            let total = packages[currentPack].price;
+
+            // Name
+            document.getElementById('summary-name').innerText = packages[currentPack].name;
+            document.getElementById('summary-price').innerText = "$" + packages[currentPack].price.toFixed(2);
+
+            // Upgrades
+            let up1 = document.getElementById('upsell-1').checked;
+            let up2 = document.getElementById('upsell-2').checked;
+
+            const summaryUp1 = document.getElementById('summary-upsell-1');
+            const summaryUp2 = document.getElementById('summary-upsell-2');
+            const summaryPriority = document.getElementById('summary-priority-shipping');
+            const summaryVIP = document.getElementById('summary-vip-support');
+
+            // Handle Ultimate Kit specific items (Package 3)
+            if (currentPack === 3) {
+                summaryPriority.classList.add('d-flex');
+                summaryPriority.classList.remove('d-none');
+                summaryVIP.classList.add('d-flex');
+                summaryVIP.classList.remove('d-none');
+            } else {
+                summaryPriority.classList.remove('d-flex');
+                summaryPriority.classList.add('d-none');
+                summaryVIP.classList.remove('d-flex');
+                summaryVIP.classList.add('d-none');
+            }
+
+            if (up1) {
+                total += upgradesOptions[1].price;
+                summaryUp1.classList.add('d-flex');
+                summaryUp1.classList.remove('d-none');
+            } else {
+                summaryUp1.classList.remove('d-flex');
+                summaryUp1.classList.add('d-none');
+            }
+
+            if (up2) {
+                total += upgradesOptions[2].price;
+                summaryUp2.classList.add('d-flex');
+                summaryUp2.classList.remove('d-none');
+            } else {
+                summaryUp2.classList.remove('d-flex');
+                summaryUp2.classList.add('d-none');
+            }
+
+            document.getElementById('total-price').innerText = "$" + total.toFixed(2);
+        }
+
+        function applyCoupon() {
+            const input = document.getElementById('coupon-input');
+            const msg = document.getElementById('coupon-message');
+            const code = input.value.trim().toUpperCase();
+
+            if (code === '') {
+                activeCoupon = null;
+                msg.classList.add('d-none');
+            } else {
+                activeCoupon = code;
+                msg.innerHTML = `<span class="text-muted"><div class="spinner-border spinner-border-sm" role="status"></div> Verifying...</span>`;
+                msg.classList.remove('d-none');
+            }
+
+            debouncedInit(); // Triggers server-side validation & price update
+        }
+
+        // Timer
+        let time = 600;
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            const timerEl = document.getElementById('timer');
+            if (timerEl) {
+                timerEl.innerText = `${m}:${s < 10 ? '0' + s : s}`;
+            }
+            if (time > 0) time--;
+        }, 1000);
+
+        // Stripe Integration
+        const STRIPE_PUBLISHABLE_KEY = 'pk_live_51K4Jm2Greyv23Im6UmwVWD8fOir20KSotBpgCKx8MDF2vtrGkA7uZGJintFSCgsOhPwpISzTPtXb8mZjAn2vAwBO00NOehIlH5'; // [USER]: Replace with your key
+        let stripe = null;
+        if (STRIPE_PUBLISHABLE_KEY !== 'pk_test_REPLACE_WITH_YOUR_KEY') {
+            stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        }
+
+        let elements;
+        let paymentElement;
+
+        async function initializeStripe() {
+            const container = document.getElementById('payment-element');
+            if (!stripe) {
+                container.innerHTML = `
+                    <div class="alert alert-warning small">
+                        <strong>Developer Note:</strong> Please set your Stripe Publishable Key in the script section to load the checkout form.
+                    </div>
+                `;
+                return;
+            }
+
+            const emailInput = document.getElementById('customer-email');
+            const email = emailInput ? emailInput.value : '';
+            const upgradesList = [];
+            if (document.getElementById('upsell-1').checked) upgradesList.push('upsell-1');
+            if (document.getElementById('upsell-2').checked) upgradesList.push('upsell-2');
+
+            // Ensure Stripe metadata includes 'Lifetime_Protection: true' and 'Priority_Handling: true' for fulfillment.
+
+            try {
+                // Show loading state
+                if (container && !container.querySelector('.spinner-border')) {
+                    container.innerHTML = `
+                        <div class="text-center p-4">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading Secure Payment...</span>
+                            </div>
+                            <p class="mt-2 small text-muted">Updating Secure Checkout...</p>
+                        </div>
+                    `;
+                }
+
+                const response = await fetch('/.netlify/functions/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: {
+                            packageId: currentPack,
+                            upgrades: upgradesList,
+                            coupon: activeCoupon
+                        },
+                        email: email
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const clientSecret = data.clientSecret;
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Update Total UI with server-calculated price
+                if (data.amount !== undefined) {
+                    serverCalculatedTotal = data.amount;
+                    document.getElementById('total-price').innerText = "$" + data.amount.toFixed(2);
+
+                    const msg = document.getElementById('coupon-message');
+                    if (activeCoupon) {
+                        if (data.discount > 0) {
+                            msg.innerHTML = `<span class="text-success">Success: $${data.discount.toFixed(2)} discount applied!</span>`;
+                        } else {
+                            msg.innerHTML = `<span class="text-danger">Invalid or expired code.</span>`;
+                            activeCoupon = null;
+                        }
+                    }
+                }
+
+                const appearance = {
+                    theme: 'stripe',
+                    variables: {
+                        colorPrimary: '#56766b',
+                        colorBackground: '#ffffff',
+                        colorText: '#212529',
+                        colorDanger: '#df1b41',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        spacingUnit: '4px',
+                        borderRadius: '6px',
+                    },
+                };
+
+                elements = stripe.elements({ clientSecret, appearance });
+                paymentElement = elements.create('payment');
+                paymentElement.mount('#payment-element');
+
+                // Remove loading state once mounted
+                paymentElement.on('ready', () => {
+                    const loader = container.querySelector('.text-center');
+                    if (loader) loader.remove();
+                });
+
+            } catch (e) {
+                console.error("Stripe initialization failed", e);
+                container.innerHTML = `
+                    <div class="alert alert-danger small">
+                        <i class="bi bi-exclamation-triangle-fill"></i> Secure Checkout could not be loaded. 
+                        Please ensure you are running this on a live server (Netlify) and your Stripe keys are configured.
+                        <br><br><small>Error: ${e.message}</small>
+                    </div>
+                `;
+            }
+        }
+
+        async function handlePaymentSubmit() {
+            if (!elements || !stripe) return;
+
+            const submitBtn = document.getElementById('submit-button');
+            const messageContainer = document.getElementById('payment-message');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>PROCESSING...</span>';
+
+            const { error } = await stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    return_url: window.location.origin + '/success.html',
+                    billing_details: {
+                        name: document.getElementById('customer-name').value,
+                        email: document.getElementById('customer-email').value,
+                    }
+                },
+            });
+
+            if (error) {
+                messageContainer.classList.remove('d-none');
+                messageContainer.textContent = error.message;
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>COMPLETE ORDER <br><span style="font-size: 0.9rem; font-weight: 500;">& ACTIVATE SLEEP TEST</span></span>';
+            }
+        }
+
+        // Re-initialize or update intent when selections change
+        let debounceTimer;
+        function debouncedInit() {
+            if (!stripe) return;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                if (paymentElement) {
+                    paymentElement.destroy();
+                }
+                initializeStripe();
+            }, 500);
+        }
+
+        // Add event listeners for upgrades to update intent
+        document.getElementById('upsell-1').addEventListener('change', () => {
+            updateTotal();
+            debouncedInit();
+        });
+        document.getElementById('upsell-2').addEventListener('change', () => {
+            updateTotal();
+            debouncedInit();
+        });
+
+        // PayPal Integration
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined') return;
+
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'gold',
+                    shape: 'pill',
+                    label: 'paypal'
+                },
+                createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: "RestedFeet Sleep Protocol Package",
+                            amount: {
+                                currency_code: "USD",
+                                value: serverCalculatedTotal.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: async (data, actions) => {
+                    const order = await actions.order.capture();
+                    window.location.href = `success.html?orderId=${order.id}&method=paypal`;
+                },
+                onError: (err) => {
+                    console.error('PayPal Error:', err);
+                    document.getElementById('payment-message').classList.remove('d-none');
+                    document.getElementById('payment-message').innerText = "PayPal selection failed. Please try again or use a card above.";
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Init
+        updateTotal();
+        initializeStripe();
+        initPayPalButtons();
+    </script>
+</body>
+
+</html>

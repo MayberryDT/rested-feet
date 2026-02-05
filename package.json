@@ -1,0 +1,14 @@
+{
+  "name": "rested-feet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "@netlify/functions": "^2.0.0"
+  }
+}
