@@ -68,10 +68,9 @@ export default async (req, context) => {
             amount -= discount;
             if (amount < 50) amount = 50; // Stripe min charge
 
-            const paymentIntent = await stripe.paymentIntents.create({
+            const params = {
                 amount,
                 currency: 'usd',
-                receipt_email: email,
                 metadata: {
                     package: items.packageId,
                     upgrades: items.upgrades ? items.upgrades.join(', ') : 'none',
@@ -82,7 +81,13 @@ export default async (req, context) => {
                 automatic_payment_methods: {
                     enabled: true,
                 },
-            });
+            };
+
+            if (email && email.trim().length > 0) {
+                params.receipt_email = email.trim();
+            }
+
+            const paymentIntent = await stripe.paymentIntents.create(params);
 
             return new Response(JSON.stringify({
                 clientSecret: paymentIntent.client_secret,
