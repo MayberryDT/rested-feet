@@ -655,7 +655,6 @@
                     </div>
 
                     <form id="payment-form">
-                        <input type="text" id="customer-name" class="form-control" placeholder="Full Name" required>
                         <input type="email" id="customer-email" class="form-control" placeholder="Email Address"
                             required>
                         <div id="address-element" class="mb-3">
@@ -1091,9 +1090,6 @@
                 // Address Element
                 addressElement = elements.create('address', {
                     mode: 'shipping',
-                    fields: {
-                        name: 'never',
-                    },
                     autocomplete: {
                         mode: 'automatic',
                     },
@@ -1131,11 +1127,10 @@
         async function handlePaymentSubmit() {
             if (!elements || !stripe) return;
 
-            const name = document.getElementById('customer-name').value;
             const email = document.getElementById('customer-email').value;
 
             // Gatekeeper Validation
-            if (!name || !email) {
+            if (!email) {
                 alert('Please provide your shipping details to secure your 90-Night Sleep Pass.');
                 return;
             }
@@ -1145,6 +1140,8 @@
                 alert('Please provide your shipping details to secure your 90-Night Sleep Pass.');
                 return;
             }
+
+            const name = value.name; // Pull name from Stripe Address Element
 
             const submitBtn = document.getElementById('submit-button');
             const messageContainer = document.getElementById('payment-message');
