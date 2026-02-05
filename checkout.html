@@ -322,8 +322,14 @@
         #paypal-button-container {
             width: 100%;
             margin-bottom: 20px;
-            display: block;
+            display: flex;
+            justify-content: center;
             min-height: 45px;
+        }
+
+        /* Ensure PayPal inner button spans container if needed */
+        #paypal-button-container>div {
+            width: 100% !important;
         }
 
         .btn-massive:hover {

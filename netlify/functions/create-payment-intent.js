@@ -1,15 +1,17 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 export default async (req, context) => {
-    if (!process.env.STRIPE_SECRET_KEY) {
-        console.error("CRITICAL: STRIPE_SECRET_KEY is not defined in environment variables.");
-        return new Response(JSON.stringify({ error: "Stripe configuration error: API key missing." }), {
+    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+    if (!stripeSecretKey) {
+        console.error("CRITICAL: STRIPE_SECRET_KEY is missing from environment.");
+        return new Response(JSON.stringify({ error: "Configuration Error: Stripe key not found." }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });
     }
+
+    const stripe = new Stripe(stripeSecretKey);
 
     if (req.method !== 'POST') {
         return new Response('Method Not Allowed', { status: 405 });
