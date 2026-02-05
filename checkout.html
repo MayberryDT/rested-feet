@@ -990,6 +990,7 @@
             if (sizeName === 'Extra Large') id = 'size-xl';
 
             document.getElementById(id).classList.add('selected');
+            debouncedInit();
         }
 
         function selectPackage(id) {
