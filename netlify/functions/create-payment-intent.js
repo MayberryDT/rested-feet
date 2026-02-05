@@ -74,6 +74,7 @@ export default async (req, context) => {
                 metadata: {
                     package: items.packageId,
                     upgrades: items.upgrades ? items.upgrades.join(', ') : 'none',
+                    Customer_Size: items.size || 'Not Selected',
                     Lifetime_Protection: lifetimeProtection.toString(),
                     Priority_Handling: priorityHandling.toString(),
                     Coupon_Applied: items.coupon || 'none'
