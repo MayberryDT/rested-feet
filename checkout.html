@@ -324,12 +324,17 @@
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
             min-height: 45px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Ensure PayPal inner button spans container if needed */
+        /* Ensure PayPal inner button spans container logic */
         #paypal-button-container>div {
-            width: 100% !important;
+            margin: 0 auto !important;
+            max-width: 100% !important;
         }
 
         .btn-massive:hover {
@@ -1033,7 +1038,14 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                    let errorMessage = `Server returned ${response.status}`;
+                    try {
+                        const errorData = await response.json();
+                        if (errorData.error) errorMessage += `: ${errorData.error}`;
+                    } catch (e) {
+                        errorMessage += `: ${response.statusText}`;
+                    }
+                    throw new Error(errorMessage);
                 }
 
                 const data = await response.json();
