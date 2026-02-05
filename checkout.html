@@ -611,33 +611,10 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Contact Details -->
+                <!-- Step 2: Optional Extras -->
                 <div class="checkout-box">
                     <div class="section-header">
                         <i class="bi bi-2-square-fill section-icon"></i>
-                        <h4>Contact Details</h4>
-                    </div>
-
-                    <form id="payment-form">
-                        <input type="text" id="customer-name" class="form-control" placeholder="Full Name" required>
-                        <input type="email" id="customer-email" class="form-control" placeholder="Email Address"
-                            required>
-                        <div id="address-element" class="mb-3">
-                            <!-- Stripe will inject the Address Element here -->
-                            <div class="text-center p-3">
-                                <div class="spinner-border spinner-border-sm text-success" role="status">
-                                    <span class="visually-hidden">Loading Address Fields...</span>
-                                </div>
-                                <p class="mt-2 small text-muted">Loading Secure Address Lookup...</p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Step 3: Optional Extras -->
-                <div class="checkout-box">
-                    <div class="section-header">
-                        <i class="bi bi-3-square-fill section-icon"></i>
                         <h4>Optional Upgrades</h4>
                     </div>
 
@@ -668,6 +645,29 @@
                                 insurance against loss, damage, or theft for total peace of mind.</p>
                         </div>
                     </label>
+                </div>
+
+                <!-- Step 3: Contact Details -->
+                <div class="checkout-box">
+                    <div class="section-header">
+                        <i class="bi bi-3-square-fill section-icon"></i>
+                        <h4>Contact Details</h4>
+                    </div>
+
+                    <form id="payment-form">
+                        <input type="text" id="customer-name" class="form-control" placeholder="Full Name" required>
+                        <input type="email" id="customer-email" class="form-control" placeholder="Email Address"
+                            required>
+                        <div id="address-element" class="mb-3">
+                            <!-- Stripe will inject the Address Element here -->
+                            <div class="text-center p-3">
+                                <div class="spinner-border spinner-border-sm text-success" role="status">
+                                    <span class="visually-hidden">Loading Address Fields...</span>
+                                </div>
+                                <p class="mt-2 small text-muted">Loading Secure Address Lookup...</p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!-- Step 4: Payment -->
@@ -1091,6 +1091,9 @@
                 // Address Element
                 addressElement = elements.create('address', {
                     mode: 'shipping',
+                    fields: {
+                        name: 'never',
+                    },
                     autocomplete: {
                         mode: 'automatic',
                     },
