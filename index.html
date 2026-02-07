@@ -52,6 +52,11 @@
             line-height: 1.8;
         }
 
+        footer p {
+            font-size: inherit;
+            line-height: inherit;
+        }
+
         .fw-bold {
             font-weight: 700;
         }
@@ -145,10 +150,16 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        img,
+        .media-container img,
+        .slimmer>.text-center img,
         video {
             width: 100%;
             display: block;
+        }
+
+        img[src*="Badge_"] {
+            width: auto !important;
+            display: inline-block !important;
         }
 
         /* Testimonials */
@@ -410,9 +421,9 @@
 <body>
 
     <div
-        style="background-color: #f1f1f1; border-bottom: 1px solid #ddd; padding: 4px 0; text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #444;">
-        Senior Priority Support & Phone Orders: <a href="tel:18447783338"
-            style="color: #cf000a; text-decoration: none;">1-844-778-3338</a>
+        style="background-color: #2d2d2d; padding: 10px 15px; text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.5px;">
+        OFFICIAL SENIOR HEALTH HOTLINE (SIZING &amp; CLINICAL QUESTIONS): <a href="tel:18447783338"
+            style="color: #fff; text-decoration: underline;">1-844-778-3338</a>
     </div>
 
     <div class="top-logo-container">
@@ -432,17 +443,7 @@
                     in seniors (Dispatch Archives).</p>
             </div>
 
-            <div class="trust-bar"
-                style="background-color: #f5f5f5; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 12px 15px; margin-bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-family: 'Inter', sans-serif; font-size: 15px; color: #555;">
-                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> Family Owned & Operated
-                    since 2015</span>
-                <span class="d-none d-md-inline opacity-25">|</span>
-                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> Shipped from Alabama,
-                    USA</span>
-                <span class="d-none d-md-inline opacity-25">|</span>
-                <span class="text-nowrap"><i class="bi bi-check-lg" style="color: #56766b;"></i> 90-Night Clinical Sleep
-                    Test</span>
-            </div>
+
 
             <div class="author-box">
                 <img src="Author.jpeg" alt="Health Dispatch" class="author-photo">
@@ -484,7 +485,10 @@
 
             <h3 class="mt-5 fw-bold">The "Compression Trap": Why Your Feet Hurt More at Night</h3>
 
-            <p>"For years, doctors treated nocturnal foot discomfort as a chemical imbalance. However, new research
+            <p>
+                <img src="Badge_ClinicalGrade.png" alt="Clinical Grade Verified"
+                    style="float: right; height: 160px; margin: 0 0 15px 20px;">
+                "For years, doctors treated nocturnal foot discomfort as a chemical imbalance. However, new research
                 suggests the root cause is the 'Sensory Void.' When you lie down, the sensory input to your feet stops.
                 In this silence, your nerves become hypersensitive and misfire to 'search' for a signal. The RestedFeet
                 sleeve uses Targeted Proprioceptive Calibration (TPC) to provide a constant, basal pressure. This tells
@@ -494,6 +498,13 @@
                 Sensory Research, 78% of nocturnal foot discomfort in seniors is triggered by "Basal Deprivation"—a
                 state where the brain over-amplifies nerve signals because it lacks physical contact. By providing a
                 constant, calibrated touch, we can effectively "mute" the misfiring nerves.</p>
+
+            <!-- Verification Anchor -->
+            <div
+                style="background-color: #f4f4f4; padding: 14px 20px; border-radius: 4px; margin: 2rem 0; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.7; letter-spacing: 0.2px;">
+                VERIFICATION STATUS: Reported by Wellness Dispatch Research. Item: Sleep-Cut Sensory Barrier.
+                Manufacturing: Alabama, USA. Risk-Level: 90-Night Guaranteed Sleep Test.
+            </div>
 
             <div class="media-container">
                 <img src="HeatAnimation.gif"
@@ -530,6 +541,21 @@
                 <li class="mb-2">A <strong>thermostatic cotton-vent blend</strong> to prevent heat trapping.</li>
                 <li class="mb-2">A <strong>seamless interior</strong> to eliminate friction triggers.</li>
             </ul>
+
+            <!-- Mid-Story Bridge CTA -->
+            <div
+                style="background-color: #eaf4fb; border: 2px dashed #b0cfe0; padding: 20px; text-align: center; border-radius: 8px; margin: 2.5rem 0;">
+                <h4 style="font-family: 'Georgia', serif; font-weight: 700; color: #1a1a1a; margin-bottom: 0.75rem;">
+                    Update: Inventory Availability Check</h4>
+                <p style="color: #333; font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.25rem;">Due to recent
+                    clinical features, current stock of the 7-Day Sleep Recovery Kits is prioritized for first-time
+                    readers. Please click below to verify size availability in our US facility.</p>
+                <a href="checkout.html" class="cta-btn" id="mid-story-cta"
+                    style="font-size: 1.1rem; max-width: 400px; width: 100%; text-decoration: none; display: inline-flex;"
+                    onclick="window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Mid Story'});">
+                    CHECK KIT AVAILABILITY <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
 
             <h3 class="mt-5 fw-bold">The "Symptom-First" Approach</h3>
 
@@ -800,8 +826,10 @@
     <div class="container my-4">
         <div class="p-3 p-md-4 mx-auto"
             style="border: 3px solid #56766b; border-radius: 10px; background-color: #f8f9fa; max-width: 850px;">
-            <img src="GuaranteeBadge.png" alt="RestedFeet Official 90-Night Sleep Test Guarantee"
-                class="mb-2 mx-auto d-block" style="max-width: 240px; width: 100%;">
+            <div style="text-align: center;">
+                <img src="Badge_SleepTest.png" alt="RestedFeet Official 90-Night Sleep Test Guarantee" class="mb-2"
+                    style="max-width: 240px;">
+            </div>
 
             <h2 class="fw-bold text-center mb-4">Our 90-Night "Rested Sleep" Challenge</h2>
 
@@ -996,6 +1024,25 @@
             </div>
         </div>
     </div>
+    <!-- Fulfillment & Support Section -->
+    <div
+        style="background-color: #fafafa; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 3rem 15px; margin-top: 2.5rem; font-family: 'Inter', sans-serif;">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <h4
+                style="font-weight: 800; font-size: 1.1rem; color: #1a1a1a; margin-bottom: 0.4rem; letter-spacing: 0.5px; text-transform: uppercase;">
+                Fulfillment &amp; Support: The RestedFeet™ Promise</h4>
+            <div style="width: 50px; height: 3px; background: #56766b; margin: 0 auto 1.5rem;"></div>
+            <img src="Family_Team.jpg" alt="The RestedFeet Family Team"
+                style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 1.5rem;">
+            <p style="font-size: 0.92rem; color: #444; line-height: 1.7; margin: 0; text-align: left;">
+                Every 7-Day Kit is hand-inspected and shipped from our family-owned facility in Alabama. We
+                don't use foreign call centers; when you call <a href="tel:18447783338"
+                    style="color: #1a1a1a; font-weight: 700; text-decoration: none;">1-844-778-3338</a>, you are
+                speaking to a US-based specialist.
+            </p>
+        </div>
+    </div>
+
     <div id="cta-section" class="cta-festive">
         <div class="row align-items-center g-4 position-relative z-3">
             <!-- Left: Product Image (Smaller Footprint) -->
@@ -1025,13 +1072,13 @@
                 <div class="price-box mb-3">
                     <span class="price-old opacity-50 h6">MSRP: $49.99</span>
                     <span class="display-5 fw-black mb-0 ms-2">$29.99</span>
-                    <!-- Verified offer tag removed -->
                 </div>
 
                 <!-- Neutral Button -->
                 <div class="d-flex justify-content-center">
-                    <a href="checkout.html" class="cta-btn py-3 px-5 mb-3"
-                        style="font-size: 1.25rem; max-width: 550px; width: 100%; text-decoration: none;">
+                    <a href="checkout.html" class="cta-btn py-3 px-5 mb-3" id="bottom-cta"
+                        style="font-size: 1.25rem; max-width: 550px; width: 100%; text-decoration: none;"
+                        onclick="window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Bottom CTA'});">
                         Take the 90-Night Sleep Test <i class="bi bi-arrow-right ms-2"></i>
                     </a>
                 </div>
@@ -1096,7 +1143,7 @@
         </p>
     </div>
 
-    <footer style="background-color: #000; color: #fff; padding: 4rem 0; font-family: 'Inter', sans-serif;">
+    <footer style="background-color: #000; color: #fff; padding: 2rem 0; font-family: 'Inter', sans-serif;">
         <div class="container">
             <div class="row g-5">
                 <!-- Main Branding & Copyright -->

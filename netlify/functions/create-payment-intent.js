@@ -66,6 +66,7 @@ export default async (req, context) => {
             }
 
             amount -= discount;
+            amount = Math.round(amount); // Ensure integer cents — prevents 500 errors from floating-point edge cases
             if (amount < 50) amount = 50; // Stripe min charge
 
             const params = {

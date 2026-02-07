@@ -321,21 +321,9 @@
         }
 
         #paypal-button-container {
-            width: 100%;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 100%;
+            margin: 0 auto 10px auto;
             min-height: 45px;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Ensure PayPal inner button spans container logic */
-        #paypal-button-container>div {
-            margin: 0 auto !important;
-            max-width: 100% !important;
         }
 
         .btn-massive:hover {
@@ -494,6 +482,11 @@
 </head>
 
 <body>
+    <!-- UET: Checkout Page View Event -->
+    <script>
+        window.uetq = window.uetq || [];
+        window.uetq.push('event', 'begin_checkout', { 'event_category': 'Conversion', 'event_label': 'Checkout Page Load' });
+    </script>
 
     <div
         style="background-color: #f1f1f1; border-bottom: 1px solid #ddd; padding: 6px 0; text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #444;">
@@ -774,12 +767,14 @@
                         <i class="bi bi-arrow-right-circle-fill display-6"></i>
                     </button>
 
+                    <div class="text-center my-2" style="font-size: 0.8rem; color: #999; font-weight: 600;">— or pay
+                        with —</div>
+                    <div id="paypal-button-container"></div>
+
                     <p class="payment-disclaimer">
                         Both payment methods are protected by our 90-Night Sleep Challenge. <br>
                         No subscriptions or recurring fees apply to either option.
                     </p>
-
-                    <div id="paypal-button-container"></div>
 
                     <div class="text-center mt-3">
                         <img src="pay-cards.png" style="max-width: 250px; opacity: 0.8;" alt="Accepted Cards">
@@ -798,32 +793,51 @@
                             <h5 class="fw-bold m-0">Order Summary</h5>
                         </div>
                         <div class="p-3">
-                            <div class="d-flex justify-content-between mb-2">
+                            <div class="d-flex justify-content-between mb-1">
                                 <span id="summary-name" class="fw-bold">Standard Bundle (8 Pairs)</span>
                                 <span class="fw-bold" id="summary-price">$49.95</span>
                             </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small text-muted">Retail Price:</span>
+                                <span class="small text-muted text-decoration-line-through"
+                                    id="summary-original-price">$99.98</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2"
+                                style="background: #eef7f1; border-radius: 4px; padding: 3px 8px;">
+                                <span class="small fw-bold text-success">You Save:</span>
+                                <span class="small fw-bold text-success" id="summary-savings">$50.03</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2 small text-muted" id="summary-size-row">
+                                <span>Size: <span id="summary-size">Small</span></span>
+                                <span><i class="bi bi-check-circle-fill text-success"></i></span>
+                            </div>
 
-                            <!-- Included Content (Receipt Style) -->
+                            <!-- Included Bonuses (with perceived value) -->
                             <div id="bonus-items-summary" class="border-bottom pb-2 mb-2">
                                 <div class="d-flex justify-content-between mb-1 small text-muted">
-                                    <span>The Neuropathy Sleep Protocol (Master Guide)</span>
-                                    <span class="text-success fw-bold">FREE</span>
+                                    <span>Neuropathy Sleep Protocol</span>
+                                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$29</span>
+                                        <span class="text-success fw-bold ms-1">FREE</span></span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-1 small text-muted">
                                     <span>7-Day Nerve-Calming Checklist</span>
-                                    <span class="text-success fw-bold">FREE</span>
+                                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$14</span>
+                                        <span class="text-success fw-bold ms-1">FREE</span></span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-1 small text-muted">
-                                    <span>Doctor’s Office Conversation Guide</span>
-                                    <span class="text-success fw-bold">FREE</span>
+                                    <span>Doctor's Conversation Guide</span>
+                                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$19</span>
+                                        <span class="text-success fw-bold ms-1">FREE</span></span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-1 small text-muted">
                                     <span>Anti-Inflammatory Kitchen List</span>
-                                    <span class="text-success fw-bold">FREE</span>
+                                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$12</span>
+                                        <span class="text-success fw-bold ms-1">FREE</span></span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-1 small text-muted">
-                                    <span>90-Night Sleep Pass (Protection)</span>
-                                    <span class="text-success fw-bold">FREE</span>
+                                    <span>90-Night Sleep Pass</span>
+                                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$25</span>
+                                        <span class="text-success fw-bold ms-1">FREE</span></span>
                                 </div>
                                 <div class="justify-content-between mb-1 small text-primary d-none"
                                     id="summary-vip-support">
@@ -844,6 +858,20 @@
                             <div class="justify-content-between mb-2 text-primary small d-none" id="summary-upsell-2">
                                 <span>+ Priority Handling</span>
                                 <span>$9.99</span>
+                            </div>
+
+                            <!-- Discount Code -->
+                            <div class="mb-2 pt-2 border-top">
+                                <label class="small text-muted fw-bold mb-1 d-block"
+                                    style="font-size: 0.75rem;">Discount Code</label>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <input type="text" id="promo-code-input" class="form-control form-control-sm mb-0"
+                                        value="SENIOR40" readonly
+                                        style="font-size: 0.85rem; padding: 6px 10px; background: #f9fcf9; border-color: #56766b; max-width: 160px;">
+                                    <span id="promo-applied-badge" class="badge bg-success"
+                                        style="font-size: 0.7rem;"><i
+                                            class="bi bi-check-circle-fill me-1"></i>Applied</span>
+                                </div>
                             </div>
 
                             <hr>
@@ -996,9 +1024,9 @@
     <script>
         // Constants
         const packages = {
-            1: { name: "Starter Bundle (4 Pairs)", price: 29.99 },
-            2: { name: "Standard Bundle (8 Pairs)", price: 49.95 },
-            3: { name: "Ultimate Relief Kit (12 Pairs)", price: 67.00 }
+            1: { name: "Starter Bundle (4 Pairs)", price: 29.99, originalPrice: 49.99, savings: 20.00 },
+            2: { name: "Standard Bundle (8 Pairs)", price: 49.95, originalPrice: 99.98, savings: 50.03 },
+            3: { name: "Ultimate Relief Kit (12 Pairs)", price: 67.00, originalPrice: 149.97, savings: 82.97 }
         };
         const upgradesOptions = {
             1: { id: "upsell-1", price: 19.99 },
@@ -1022,6 +1050,7 @@
             if (sizeName === 'Extra Large') id = 'size-xl';
 
             document.getElementById(id).classList.add('selected');
+            updateTotal();
             debouncedInit();
         }
 
@@ -1037,9 +1066,13 @@
         function updateTotal() {
             let total = packages[currentPack].price;
 
-            // Name
+            // Name & Price
             document.getElementById('summary-name').innerText = packages[currentPack].name;
             document.getElementById('summary-price').innerText = "$" + packages[currentPack].price.toFixed(2);
+
+            // Original price & savings
+            document.getElementById('summary-original-price').innerText = "$" + packages[currentPack].originalPrice.toFixed(2);
+            document.getElementById('summary-savings').innerText = "$" + packages[currentPack].savings.toFixed(2);
 
             // Upgrades
             let up1 = document.getElementById('upsell-1').checked;
@@ -1082,6 +1115,18 @@
             }
 
             document.getElementById('total-price').innerText = "$" + total.toFixed(2);
+
+            // Update size display in summary
+            const sizeLabels = {
+                'Small': "Small (Women's 4-6.5)",
+                'Standard': "Standard (Women's 7-10.5 / Men's 6-8.5)",
+                'Large': "Large (Men's 9-12.5 / Women's 11+)",
+                'Extra Large': "Extra Large (Men's 13-15)"
+            };
+            const summarySize = document.getElementById('summary-size');
+            if (summarySize) {
+                summarySize.innerText = sizeLabels[currentSize] || currentSize;
+            }
         }
 
 
@@ -1235,6 +1280,10 @@
         async function handlePaymentSubmit() {
             if (!elements || !stripe) return;
 
+            // UET: Track Stripe payment method
+            window.uetq = window.uetq || [];
+            window.uetq.push('event', 'payment_method', { 'event_category': 'Conversion', 'event_label': 'Payment Method', 'method': 'stripe' });
+
             const email = document.getElementById('customer-email').value;
 
             // Gatekeeper Validation
@@ -1339,6 +1388,11 @@
                 },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture();
+
+                    // UET: Track PayPal payment method
+                    window.uetq = window.uetq || [];
+                    window.uetq.push('event', 'payment_method', { 'event_category': 'Conversion', 'event_label': 'Payment Method', 'method': 'paypal' });
+
                     window.location.href = `success.html?orderId=${order.id}&method=paypal`;
                 },
                 onError: (err) => {
