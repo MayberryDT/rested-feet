@@ -314,6 +314,8 @@
             }
         }
     </style>
+    <!-- Microsoft Advertising UET Tag -->
+    <script>(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "343232490", enableAutoSpaTracking: true }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
 </head>
 
 <body>
@@ -430,22 +432,36 @@
     </main>
 
     <!-- Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer" style="padding: 4rem 0; border-top: 1px solid #eee;">
         <div class="container">
-            <div class="support-cta">
-                <h3 class="fw-bold mb-3">Questions about your order?</h3>
-                <p class="text-muted">Our Senior Priority Specialists are standing by.</p>
-                <a href="tel:18447783338" class="phone-link">1-844-778-3338</a>
-            </div>
+            <div class="row g-5 text-center text-md-start align-items-center">
+                <!-- Branding & Copyright -->
+                <div class="col-md-4">
+                    <div class="logo mb-2" style="font-weight: 800; font-size: 1.2rem; color: #333;">RestedFeet™</div>
+                    <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0; color: #666;">© 2026 RestedFeet.
+                        <br>All rights reserved.</p>
+                </div>
 
-            <div class="auth-badge">
-                <i class="bi bi-flag-fill text-danger"></i> USA Family Owned — Est. 2015
-            </div>
+                <!-- Support -->
+                <div class="col-md-4 text-center">
+                    <div
+                        style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; opacity: 0.4;">
+                        Questions?</div>
+                    <a href="tel:18447783338"
+                        style="font-size: 1.5rem; font-weight: 900; color: var(--brand-green); text-decoration: none;">1-844-778-3338</a>
+                    <div class="mt-2" style="font-size: 0.75rem; opacity: 0.6;">Senior Priority Line</div>
+                </div>
 
-            <div class="mt-5 pt-5 opacity-50 small">
-                <img src="RFLogo.png" alt="RestedFeet Icon"
-                    style="width: 40px; margin-bottom: 1rem; filter: grayscale(1);">
-                <p>© 2026 RestedFeet™. All Rights Reserved.</p>
+                <!-- Fine Print (Disclaimers) -->
+                <div class="col-md-4">
+                    <div style="font-size: 0.55rem; opacity: 0.25; line-height: 1.6; text-align: left; color: #000;">
+                        <p class="mb-2">RestedFeet™ is a wellness brand owned and operated by Hotel Win LLC. 2561 Mounds
+                            Ct, Sapulpa, OK 74066.</p>
+                        <p class="mb-0"><strong>Medical Disclaimer:</strong> These statements have not been evaluated by
+                            the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or
+                            prevent any disease. Individual results may vary.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

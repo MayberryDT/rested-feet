@@ -312,11 +312,12 @@
 
         .payment-disclaimer {
             text-align: center;
-            font-size: 0.75rem;
-            color: #666;
+            font-size: 0.7rem;
+            color: #888;
             margin: 1.5rem 0 0.5rem;
             line-height: 1.5;
             font-weight: 500;
+            opacity: 0.7;
         }
 
         #paypal-button-container {
@@ -488,6 +489,8 @@
             box-shadow: 0 0 0 1px var(--primary-green);
         }
     </style>
+    <!-- Microsoft Advertising UET Tag -->
+    <script>(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "343232490", enableAutoSpaTracking: true }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
 </head>
 
 <body>
@@ -930,33 +933,62 @@
 
     </div>
 
-    <footer style="background-color: #000; color: #fff; padding: 4rem 0; text-align: center;">
+    <footer style="background-color: #000; color: #fff; padding: 4rem 0; font-family: 'Inter', sans-serif;">
         <div class="container">
-            <div class="logo mb-4" style="font-weight: 700; font-size: 1.5rem;">RestedFeet™</div>
+            <div class="row g-5">
+                <!-- Main Branding & Copyright -->
+                <div class="col-md-4 text-center text-md-start">
+                    <div class="logo mb-3" style="font-weight: 900; font-size: 1.4rem; letter-spacing: -0.5px;">
+                        RestedFeet™</div>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0;">© 2026 RestedFeet. <br>All rights
+                        reserved.</p>
+                </div>
 
-            <div class="footer-links mb-4">
-                <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 10px; opacity: 0.7;">Home</a>
-                <a href="privacy.html" style="color: #fff; text-decoration: none; margin: 0 10px; opacity: 0.7;">Privacy
-                    Policy</a>
-                <a href="terms.html" style="color: #fff; text-decoration: none; margin: 0 10px; opacity: 0.7;">Terms of
-                    Service</a>
-                <a href="returns.html" style="color: #fff; text-decoration: none; margin: 0 10px; opacity: 0.7;">Return
-                    Policy</a>
-                <a href="contact.html" style="color: #fff; text-decoration: none; margin: 0 10px; opacity: 0.7;">Contact
-                    Us</a>
+                <!-- Navigation Columns -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-6 text-center text-md-start">
+                            <div
+                                style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem; opacity: 0.4;">
+                                Support</div>
+                            <div class="footer-links d-flex flex-column gap-2">
+                                <a href="index.html"
+                                    style="color: #fff; text-decoration: none; font-size: 0.75rem; opacity: 0.6;">Home</a>
+                                <a href="contact.html"
+                                    style="color: #fff; text-decoration: none; font-size: 0.75rem; opacity: 0.6;">Contact
+                                    Us</a>
+                            </div>
+                        </div>
+                        <div class="col-6 text-center text-md-start">
+                            <div
+                                style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem; opacity: 0.4;">
+                                Company</div>
+                            <div class="footer-links d-flex flex-column gap-2">
+                                <a href="privacy.html"
+                                    style="color: #fff; text-decoration: none; font-size: 0.75rem; opacity: 0.6;">Privacy
+                                    Policy</a>
+                                <a href="terms.html"
+                                    style="color: #fff; text-decoration: none; font-size: 0.75rem; opacity: 0.6;">Terms
+                                    of Service</a>
+                                <a href="returns.html"
+                                    style="color: #fff; text-decoration: none; font-size: 0.75rem; opacity: 0.6;">Return
+                                    Policy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fine Print (Burying Disclaimers) -->
+                <div class="col-md-4">
+                    <div style="font-size: 0.55rem; opacity: 0.15; line-height: 1.6; text-align: left;">
+                        <p class="mb-2">RestedFeet™ is a wellness brand owned and operated by Hotel Win LLC. 2561 Mounds
+                            Ct, Sapulpa, OK 74066.</p>
+                        <p class="mb-0"><strong>Medical Disclaimer:</strong> These statements have not been evaluated by
+                            the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or
+                            prevent any disease. Individual results may vary.</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="footer-info mb-4" style="font-size: 0.85rem; opacity: 0.6; max-width: 600px; margin: 0 auto;">
-                <p class="mb-2">RestedFeet™ is a wellness brand owned and operated by Hotel Win LLC.</p>
-                <p class="mb-2">Hotel Win LLC, 2561 Mounds Ct, Sapulpa, OK 74066</p>
-                <p class="mb-0" style="border: 1px solid #333; padding: 10px; margin-top: 15px;">
-                    <strong>Medical Disclaimer:</strong> These statements have not been evaluated by the Food and Drug
-                    Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-                    Individual results may vary.
-                </p>
-            </div>
-
-            <p class="small opacity-50">© 2026 RestedFeet. All rights reserved.</p>
         </div>
     </footer>
 
