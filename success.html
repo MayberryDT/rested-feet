@@ -316,9 +316,16 @@
     </style>
     <!-- Microsoft Advertising UET Tag -->
     <script>(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "343232490", enableAutoSpaTracking: true }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
+    <!-- Microsoft UET: Purchase Event Tag -->
+    <script>
+        function uet_report_conversion() {
+            window.uetq = window.uetq || [];
+            window.uetq.push('event', 'purchase', {});
+        }
+    </script>
 </head>
 
-<body>
+<body onload="uet_report_conversion();">
 
     <!-- Header -->
     <header class="top-logo-container">
@@ -439,7 +446,8 @@
                 <div class="col-md-4">
                     <div class="logo mb-2" style="font-weight: 800; font-size: 1.2rem; color: #333;">RestedFeet™</div>
                     <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0; color: #666;">© 2026 RestedFeet.
-                        <br>All rights reserved.</p>
+                        <br>All rights reserved.
+                    </p>
                 </div>
 
                 <!-- Support -->

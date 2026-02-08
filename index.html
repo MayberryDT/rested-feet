@@ -439,6 +439,13 @@
     </style>
     <!-- Microsoft Advertising UET Tag -->
     <script>(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "343232490", enableAutoSpaTracking: true }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
+    <!-- Microsoft UET: Add to Cart Event Tag -->
+    <script>
+        function uet_report_conversion() {
+            window.uetq = window.uetq || [];
+            window.uetq.push('event', 'add_to_cart', {});
+        }
+    </script>
 </head>
 
 <body>
@@ -594,7 +601,7 @@
                     readers. Please click below to verify size availability in our US facility.</p>
                 <a href="checkout.html" class="cta-btn" id="mid-story-cta"
                     style="font-size: 1.1rem; max-width: 400px; width: 100%; text-decoration: none; display: inline-flex;"
-                    onclick="window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Mid Story'});">
+                    onclick="uet_report_conversion(); window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Mid Story'});">
                     CHECK KIT AVAILABILITY <i class="bi bi-arrow-right ms-2"></i>
                 </a>
             </div>
@@ -847,7 +854,8 @@
                         <p class="text-muted small">Access our real-time inventory tracker to check color availability
                             and claim seasonal bundles.</p>
                         <a href="#cta-section" class="btn btn-lg fw-bold w-100 py-3 mt-auto"
-                            style="background-color: var(--primary-color); border-color: var(--primary-color); color: white;">
+                            style="background-color: var(--primary-color); border-color: var(--primary-color); color: white;"
+                            onclick="uet_report_conversion();">
                             Check Availability for the 7-Day Protocol <i class="bi bi-arrow-right ms-2"></i>
                         </a>
                         <div class="text-center mt-3 opacity-50">
@@ -1120,7 +1128,7 @@
                 <div class="d-flex justify-content-center">
                     <a href="checkout.html" class="cta-btn py-3 px-5 mb-3" id="bottom-cta"
                         style="font-size: 1.25rem; max-width: 550px; width: 100%; text-decoration: none;"
-                        onclick="window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Bottom CTA'});">
+                        onclick="uet_report_conversion(); window.uetq = window.uetq || []; window.uetq.push('event', 'initiate_checkout', {'event_category': 'Engagement', 'event_label': 'Advertorial Button Click - Bottom CTA'});">
                         Take the 90-Night Sleep Test <i class="bi bi-arrow-right ms-2"></i>
                     </a>
                 </div>
