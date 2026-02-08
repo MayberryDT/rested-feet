@@ -167,6 +167,8 @@
             position: relative;
             background: #fff;
             font-size: 16px;
+            display: flex;
+            flex-direction: column;
         }
 
         .quantity-item:hover {
@@ -198,17 +200,25 @@
             border: 2px solid white;
         }
 
-        .quantity-item.starter-tier {
-            opacity: 0.85;
-            border-style: dashed;
+        .quantity-item .sensitive-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #6c757d;
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 3px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .quantity-item.ultimate-tier {
-            border: 2px solid #56766b;
-            background: linear-gradient(180deg, #f9fcf9 0%, #ffffff 100%);
-            box-shadow: 0 0 20px rgba(86, 118, 107, 0.15);
-            transform: scale(1.02);
-            z-index: 5;
+            border: 2px solid #4a90c4;
+            background: #f8fbff;
         }
 
         .ultimate-tier .bi-check-circle-fill {
@@ -404,16 +414,80 @@
         }
 
         .subscription-box {
-            background-color: #e9f5ee;
-            border: 2px solid #56766b;
+            background-color: #eef7f1;
+            border: 2px solid #27ae60;
             border-radius: 8px;
             padding: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 700;
-            color: #2f453e;
+            color: #198754;
             display: flex;
             align-items: center;
             gap: 12px;
+            font-size: 15px;
+        }
+
+        /* Bonus items legibility */
+        #bonus-items-summary .small,
+        #bonus-items-summary .text-muted {
+            font-size: 15px !important;
+        }
+
+        /* Mobile Sticky Receipt */
+        #mobile-sticky-receipt {
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            #mobile-sticky-receipt {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1050;
+                background: #fff;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+                border-bottom: 2px solid var(--primary-green);
+            }
+
+            #mobile-sticky-receipt .sticky-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 20px;
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 1.05rem;
+            }
+
+            #mobile-sticky-receipt .sticky-bar .toggle-arrow {
+                transition: transform 0.2s;
+            }
+
+            #mobile-sticky-receipt .sticky-bar.open .toggle-arrow {
+                transform: rotate(180deg);
+            }
+
+            #mobile-sticky-receipt .sticky-breakdown {
+                display: none;
+                padding: 0 20px 15px;
+                border-top: 1px solid #eee;
+                font-size: 15px;
+            }
+
+            #mobile-sticky-receipt .sticky-breakdown.show {
+                display: block;
+            }
+
+            body {
+                padding-top: 52px;
+            }
+
+            /* Express Checkout Section */
+            .express-checkout-section {
+                margin-bottom: 15px;
+            }
         }
 
         .trust-logos-sidebar {
@@ -482,19 +556,73 @@
 </head>
 
 <body>
-    <!-- UET: Checkout Page View Event -->
+    <!-- UET: Checkout Page View + initiate_checkout Events -->
     <script>
         window.uetq = window.uetq || [];
         window.uetq.push('event', 'begin_checkout', { 'event_category': 'Conversion', 'event_label': 'Checkout Page Load' });
+        window.uetq.push('event', 'initiate_checkout', { 'event_category': 'Conversion', 'event_label': 'Checkout Page Load' });
     </script>
+
+    <!-- Mobile Sticky Receipt -->
+    <div id="mobile-sticky-receipt">
+        <div class="sticky-bar" onclick="toggleMobileSummary()">
+            <span>Total: <strong id="mobile-sticky-total">$29.99</strong></span>
+            <span>View Summary <span class="toggle-arrow">▾</span></span>
+        </div>
+        <div class="sticky-breakdown" id="mobile-sticky-breakdown">
+            <div class="d-flex justify-content-between mb-1 mt-2">
+                <span class="fw-bold" id="mobile-summary-name">Starter Bundle (4 Pairs)</span>
+                <span class="fw-bold" id="mobile-summary-price">$29.99</span>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+                <span class="text-muted">Retail Price:</span>
+                <span class="text-muted text-decoration-line-through" id="mobile-original-price">$49.99</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2"
+                style="background: #eef7f1; border-radius: 4px; padding: 3px 8px;">
+                <span class="fw-bold text-success">You Save:</span>
+                <span class="fw-bold text-success" id="mobile-savings">$20.00</span>
+            </div>
+            <div class="border-top pt-2 mt-2">
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Neuropathy Sleep Protocol</span>
+                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$29</span> <span
+                            class="text-success fw-bold ms-1">FREE</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>7-Day Nerve-Calming Checklist</span>
+                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$14</span> <span
+                            class="text-success fw-bold ms-1">FREE</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Doctor's Conversation Guide</span>
+                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$19</span> <span
+                            class="text-success fw-bold ms-1">FREE</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Anti-Inflammatory Kitchen List</span>
+                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$12</span> <span
+                            class="text-success fw-bold ms-1">FREE</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>90-Night Sleep Pass</span>
+                    <span><span class="text-decoration-line-through" style="opacity:0.5;">$25</span> <span
+                            class="text-success fw-bold ms-1">FREE</span></span>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold fs-5">
+                <span>Total:</span>
+                <span class="text-success" id="mobile-total-price">$29.99</span>
+            </div>
+        </div>
+    </div>
 
     <div
         style="background-color: #f1f1f1; border-bottom: 1px solid #ddd; padding: 6px 0; text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #444;">
         Prefer to order by phone? Call our Senior Priority Line: <a href="tel:18447783338"
             style="color: #cf000a; text-decoration: none; font-weight: 800;">1-844-778-3338</a>
     </div>
-
-    <!-- Urgency Top Banner Removed -->
 
     <!-- Header -->
     <header>
@@ -545,38 +673,39 @@
 
 
                     <div class="quantity-grid">
-                        <!-- Pack 1 -->
-                        <div class="quantity-item starter-tier" onclick="selectPackage(1)" id="pkg-1">
+                        <!-- Pack 1 (Default) -->
+                        <div class="quantity-item selected" onclick="selectPackage(1)" id="pkg-1">
+                            <div class="sensitive-badge">GREAT FOR SENSITIVE FEET</div>
                             <h6 class="fw-bold mb-1">Starter Bundle</h6>
-                            <p class="save-badge mb-0 text-muted">Save $20.00</p>
-                            <div class="price-large text-muted">$29.99</div>
+                            <p class="save-badge mb-0">Save $20.00</p>
+                            <div class="price-large">$29.99</div>
                             <small class="text-decoration-line-through text-muted">$49.99</small>
                             <div class="package-features mt-3">
                                 <div class="d-flex align-items-start mb-2">
-                                    <i class="bi bi-circle text-secondary me-2 small"></i>
-                                    <span class="small">1 Pack (4 Pairs) Socks</span>
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small fw-bold">1 Pack (4 Pairs) RestedFeet™ Socks</span>
                                 </div>
                                 <div class="d-flex align-items-start mb-2">
-                                    <i class="bi bi-circle text-secondary me-2 small"></i>
-                                    <span class="small">Sleep Protocol (Digital)</span>
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small">Neuropathy Sleep Protocol (Digital)</span>
                                 </div>
                                 <div class="d-flex align-items-start mb-2">
-                                    <i class="bi bi-circle text-secondary me-2 small"></i>
-                                    <span class="small">Nerve-Calming Checklist</span>
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small">7-Day Nerve-Calming Checklist</span>
                                 </div>
                                 <div class="d-flex align-items-start mb-2">
-                                    <i class="bi bi-circle text-secondary me-2 small"></i>
-                                    <span class="small">Conversation Guide</span>
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small">Doctor's Conversation Guide</span>
                                 </div>
                                 <div class="d-flex align-items-start">
-                                    <i class="bi bi-circle text-secondary me-2 small"></i>
-                                    <span class="small">90-Night Sleep Pass</span>
+                                    <i class="bi bi-check-circle-fill text-success me-2 small"></i>
+                                    <span class="small">90-Night Sleep Pass (Guarantee)</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Pack 2 (Best Seller) -->
-                        <div class="quantity-item selected" onclick="selectPackage(2)" id="pkg-2">
+                        <!-- Pack 2 (Most Popular) -->
+                        <div class="quantity-item" onclick="selectPackage(2)" id="pkg-2">
                             <div class="best-seller-badge">MOST POPULAR</div>
                             <h6 class="fw-bold mb-1">Standard Bundle</h6>
                             <p class="save-badge mb-0">Save $50.03</p>
@@ -710,6 +839,21 @@
                     </label>
                 </div>
 
+                <!-- Express Checkout (Bridge Position: after selections, before address) -->
+                <div class="checkout-box express-checkout-section">
+                    <p class="small text-muted mb-2" style="font-size: 15px;"><i
+                            class="bi bi-lightning-charge-fill text-warning"></i> <strong>Express Checkout:</strong>
+                        Already picked your bundle? Skip the address form and pay securely with PayPal.</p>
+                    <div class="subscription-box">
+                        <i class="bi bi-check-circle-fill fs-4" style="color: #27ae60;"></i>
+                        <span>✓ ONE-TIME PURCHASE: You will only be charged once today. No hidden subscriptions or
+                            auto-shipments.</span>
+                    </div>
+                    <div id="paypal-button-container" onclick="trackExpressPayPalClick()"></div>
+                    <div class="text-center mt-3 mb-1" style="font-size: 0.8rem; color: #999; font-weight: 600;">— or
+                        enter your details below for card payment —</div>
+                </div>
+
                 <!-- Step 4: Contact Details -->
                 <div class="checkout-box">
                     <div class="section-header">
@@ -756,8 +900,8 @@
                     <div id="payment-message" class="alert alert-danger d-none small"></div>
 
                     <div class="subscription-box">
-                        <i class="bi bi-check-circle-fill fs-4 text-success"></i>
-                        <span>ONE-TIME PURCHASE: You will only be charged once today. No hidden subscriptions or
+                        <i class="bi bi-check-circle-fill fs-4" style="color: #27ae60;"></i>
+                        <span>✓ ONE-TIME PURCHASE: You will only be charged once today. No hidden subscriptions or
                             auto-shipments.</span>
                     </div>
 
@@ -766,10 +910,6 @@
                                 TEST</span></span>
                         <i class="bi bi-arrow-right-circle-fill display-6"></i>
                     </button>
-
-                    <div class="text-center my-2" style="font-size: 0.8rem; color: #999; font-weight: 600;">— or pay
-                        with —</div>
-                    <div id="paypal-button-container"></div>
 
                     <p class="payment-disclaimer">
                         Both payment methods are protected by our 90-Night Sleep Challenge. <br>
@@ -1033,10 +1173,10 @@
             2: { id: "upsell-2", price: 9.99 }
         };
 
-        let currentPack = 2; // Default
-        let currentSize = 'Small'; // Default as first one is selected in UI, but actually Standard was my plan... wait UI shows Small selected. Let's make Small default or update UI. 
-        // User requested: "When a size is clicked, it should highlight". UI code above has 'selected' on Small. So default is Small.
-        let serverCalculatedTotal = 49.95; // Storage for PayPal handoff
+        let currentPack = 1; // Default to $29.99 Starter Bundle
+        let currentSize = 'Small';
+        let serverCalculatedTotal = 29.99; // Sync with default package
+        let paymentIntentId = null; // Store for update flow
 
         function selectSize(sizeName) {
             currentSize = sizeName;
@@ -1051,7 +1191,7 @@
 
             document.getElementById(id).classList.add('selected');
             updateTotal();
-            debouncedInit();
+            debouncedUpdate();
         }
 
         function selectPackage(id) {
@@ -1060,7 +1200,7 @@
             document.querySelectorAll('.quantity-item').forEach(el => el.classList.remove('selected'));
             document.getElementById('pkg-' + id).classList.add('selected');
             updateTotal();
-            debouncedInit(); // Update Stripe intent
+            debouncedUpdate(); // Update Stripe intent
         }
 
         function updateTotal() {
@@ -1126,6 +1266,11 @@
             const summarySize = document.getElementById('summary-size');
             if (summarySize) {
                 summarySize.innerText = sizeLabels[currentSize] || currentSize;
+            }
+
+            // Sync mobile sticky receipt
+            if (typeof syncMobileStickyReceipt === 'function') {
+                syncMobileStickyReceipt();
             }
         }
 
@@ -1221,8 +1366,12 @@
                 if (data.amount !== undefined) {
                     serverCalculatedTotal = data.amount;
                     document.getElementById('total-price').innerText = "$" + data.amount.toFixed(2);
+                    syncMobileStickyReceipt();
+                }
 
-
+                // Store paymentIntentId for subsequent updates (flicker fix)
+                if (clientSecret) {
+                    paymentIntentId = clientSecret.split('_secret_')[0];
                 }
 
                 const appearance = {
@@ -1338,30 +1487,64 @@
             }
         }
 
-        // Re-initialize or update intent when selections change
+        // Update payment intent amount without re-creating Stripe elements (flicker fix)
+        let paymentIntentUpdateInFlight = false;
+        async function updatePaymentAmount() {
+            if (!stripe || !paymentIntentId) return;
+            if (paymentIntentUpdateInFlight) return;
+            paymentIntentUpdateInFlight = true;
+
+            const upgradesList = [];
+            if (document.getElementById('upsell-1').checked) upgradesList.push('upsell-1');
+            if (document.getElementById('upsell-2').checked) upgradesList.push('upsell-2');
+
+            try {
+                const response = await fetch('/.netlify/functions/update-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        paymentIntentId: paymentIntentId,
+                        items: {
+                            packageId: currentPack,
+                            upgrades: upgradesList,
+                            size: currentSize
+                        }
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.amount !== undefined) {
+                        serverCalculatedTotal = data.amount;
+                        document.getElementById('total-price').innerText = "$" + data.amount.toFixed(2);
+                        syncMobileStickyReceipt();
+                    }
+                }
+            } catch (e) {
+                console.error('Payment update failed:', e);
+            } finally {
+                paymentIntentUpdateInFlight = false;
+            }
+        }
+
+        // Debounced update (replaces old debouncedInit to prevent Stripe element flicker)
         let debounceTimer;
-        function debouncedInit() {
+        function debouncedUpdate() {
             if (!stripe) return;
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
-                if (paymentElement) {
-                    paymentElement.destroy();
-                }
-                if (addressElement) {
-                    addressElement.destroy();
-                }
-                initializeStripe();
+                updatePaymentAmount();
             }, 500);
         }
 
         // Add event listeners for upgrades to update intent
         document.getElementById('upsell-1').addEventListener('change', () => {
             updateTotal();
-            debouncedInit();
+            debouncedUpdate();
         });
         document.getElementById('upsell-2').addEventListener('change', () => {
             updateTotal();
-            debouncedInit();
+            debouncedUpdate();
         });
 
         // PayPal Integration
@@ -1403,8 +1586,49 @@
             }).render('#paypal-button-container');
         }
 
+        // Mobile Sticky Receipt sync
+        function syncMobileStickyReceipt() {
+            const pkg = packages[currentPack];
+            let total = pkg.price;
+            if (document.getElementById('upsell-1').checked) total += upgradesOptions[1].price;
+            if (document.getElementById('upsell-2').checked) total += upgradesOptions[2].price;
+
+            const stickyTotal = document.getElementById('mobile-sticky-total');
+            const mobileTotal = document.getElementById('mobile-total-price');
+            const mobileName = document.getElementById('mobile-summary-name');
+            const mobilePrice = document.getElementById('mobile-summary-price');
+            const mobileOriginal = document.getElementById('mobile-original-price');
+            const mobileSavings = document.getElementById('mobile-savings');
+
+            if (stickyTotal) stickyTotal.innerText = '$' + total.toFixed(2);
+            if (mobileTotal) mobileTotal.innerText = '$' + total.toFixed(2);
+            if (mobileName) mobileName.innerText = pkg.name;
+            if (mobilePrice) mobilePrice.innerText = '$' + pkg.price.toFixed(2);
+            if (mobileOriginal) mobileOriginal.innerText = '$' + pkg.originalPrice.toFixed(2);
+            if (mobileSavings) mobileSavings.innerText = '$' + pkg.savings.toFixed(2);
+        }
+
+        function toggleMobileSummary() {
+            const breakdown = document.getElementById('mobile-sticky-breakdown');
+            const arrow = document.querySelector('.toggle-arrow');
+            if (breakdown.style.display === 'block') {
+                breakdown.style.display = 'none';
+                arrow.textContent = '▾';
+            } else {
+                breakdown.style.display = 'block';
+                arrow.textContent = '▴';
+            }
+        }
+
+        // UET tracking for Express PayPal click
+        function trackExpressPayPalClick() {
+            window.uetq = window.uetq || [];
+            window.uetq.push('event', 'initiate_checkout', { 'event_category': 'Conversion', 'event_label': 'Express PayPal Click' });
+        }
+
         // Init
         updateTotal();
+        syncMobileStickyReceipt();
         initializeStripe();
         initPayPalButtons();
     </script>
